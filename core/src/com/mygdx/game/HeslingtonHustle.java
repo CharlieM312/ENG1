@@ -15,6 +15,8 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	private int day_counter;
 	private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 	private String CurrentDay;
+	private int actv_counter;
+	private int food_counter;
 	BitmapFont font;
 
 	
@@ -26,6 +28,8 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		lake = new Texture("lake.jpg");
 		food = new Texture("glasshouse.jpg");
 		day_counter = 0;
+		food_counter = 0;
+		actv_counter = 0;
 		CurrentDay = days[day_counter];
 		font = new BitmapFont();
 	}
@@ -40,6 +44,8 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.draw(food, 250, 250);
 		font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 		font.draw(batch, "Day: " + CurrentDay, 25, 400);
+		font.draw(batch, "Activities completetd: " + actv_counter, 450, 460);
+		font.draw(batch, "Times Eaten: " + food_counter, 450, 440);
 		batch.end();
 	}
 	
