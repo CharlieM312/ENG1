@@ -27,10 +27,10 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		study = new Texture("placetoeat.jpg");
 		lake = new Texture("lake.jpg");
 		food = new Texture("glasshouse.jpg");
-		day_counter = 0;
+		DayCounter = 0;
 		food_counter = 0;
 		actv_counter = 0;
-		CurrentDay = days[day_counter];
+		CurrentDay = days[DayCounter];
 		font = new BitmapFont();
 		batch 	   = new SpriteBatch();
 		house 	   = new Texture("house.jpg");
