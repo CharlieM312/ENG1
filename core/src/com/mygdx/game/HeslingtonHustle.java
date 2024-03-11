@@ -34,12 +34,12 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		food  = new Texture("glasshouse.jpg");
 		font  = new BitmapFont();
 
-		CurrentDay 		= days[DayCounter];
-		DayCounter 		= 0;
-		FoodCounter 	= 0;
+		CurrentDay = days[DayCounter];
+		DayCounter = 0;
+		FoodCounter = 0;
 		ActivityCounter = 0;
-		DayCounter 		= 0;
-		CurrentDay 		= days[DayCounter];
+		DayCounter = 0;
+		CurrentDay = days[DayCounter];
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		return days[DayCounter];
 	}
 
-	public void IncrementDayCount(){
+	public void IncrementDayCount() {
 		DayCounter++;
 	}
 }
