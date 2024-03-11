@@ -12,39 +12,34 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	private Texture study;
 	private Texture lake;
 	private Texture food;
-	private int DayCounter;
 	private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 	private String CurrentDay;
-	private int actv_counter;
-	private int food_counter;
+	private int ActivityCounter;
+	private int FoodCounter;
+	private int DayCounter;
 	BitmapFont font;
 
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		house = new Texture("house.jpg");
-		study = new Texture("placetoeat.jpg");
-		lake = new Texture("lake.jpg");
-		food = new Texture("glasshouse.jpg");
-		DayCounter = 0;
-		food_counter = 0;
-		actv_counter = 0;
-		CurrentDay = days[DayCounter];
-		font = new BitmapFont();
-		batch 	   = new SpriteBatch();
-		house 	   = new Texture("house.jpg");
-		study 	   = new Texture("placetoeat.jpg");
-		lake  	   = new Texture("lake.jpg");
-		food  	   = new Texture("glasshouse.jpg");
-		batch = new SpriteBatch();
-		house = new Texture("house.jpg");
-		study = new Texture("placetoeat.jpg");
-		lake  = new Texture("lake.jpg");
-		food  = new Texture("glasshouse.jpg");
-		DayCounter = 0;
-		CurrentDay = days[DayCounter];
-		font  	   = new BitmapFont();
+		batch 	   	 	= new SpriteBatch();
+		house 	   	 	= new Texture("house.jpg");
+		study 	    	= new Texture("placetoeat.jpg");
+		lake 	     	= new Texture("lake.jpg");
+		food 	   	 	= new Texture("glasshouse.jpg");
+		font 	   	 	= new BitmapFont();
+		batch 	   	 	= new SpriteBatch();
+		house 	   	 	= new Texture("house.jpg");
+		study 	   	    = new Texture("placetoeat.jpg");
+		lake  	   	 	= new Texture("lake.jpg");
+		food  	     	= new Texture("glasshouse.jpg");
+		font  	   	 	= new BitmapFont();
+		CurrentDay 	 	= days[DayCounter];
+		DayCounter      = 0;
+		FoodCounter  	= 0;
+		ActivityCounter = 0;
+		DayCounter 	 	= 0;
+		CurrentDay 	 	= days[DayCounter];
 	}
 
 	@Override
@@ -55,12 +50,12 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.draw(house, 24, 24);
 		batch.draw(lake, 700, 450);
 		batch.draw(food, 250, 250);
-		font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+		
 		font.draw(batch, "Day: " + CurrentDay, 25, 400);
-		font.draw(batch, "Activities completetd: " + actv_counter, 450, 460);
-		font.draw(batch, "Times Eaten: " + food_counter, 450, 440);
+		font.draw(batch, "Activities completetd: " + ActivityCounter, 450, 460);
+		font.draw(batch, "Times Eaten: " + FoodCounter, 450, 440);
 		font.draw(batch, "Day: " + CurrentDay, 10, 460);
-		font.draw(batch, "Day: " + CurrentDay, 10, 580);
+		font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 		batch.end();
 	}
 
