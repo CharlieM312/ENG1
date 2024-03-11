@@ -15,7 +15,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		house = new Texture("house.jpg");
-		//food = new Texture("food.jpg");
+		food = new Texture("placetoeat.jpg");
 
 	}
 
@@ -23,7 +23,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	public void render () {
 		ScreenUtils.clear(1, 0, 0, 1);
 		batch.begin();
-		//batch.draw(food, 100, 12);
+		batch.draw(food, 120, 150);
 		batch.draw(house, 12, 12);
 		batch.end();
 	}
@@ -32,5 +32,6 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		house.dispose();
+		food.dispose();
 	}
 }
