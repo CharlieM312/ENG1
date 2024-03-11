@@ -50,11 +50,9 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.draw(house, 24, 24);
 		batch.draw(lake, 700, 450);
 		batch.draw(food, 250, 250);
-		
-		font.draw(batch, "Day: " + CurrentDay, 25, 400);
-		font.draw(batch, "Activities completetd: " + ActivityCounter, 450, 460);
-		font.draw(batch, "Times Eaten: " + FoodCounter, 450, 440);
-		font.draw(batch, "Day: " + CurrentDay, 10, 460);
+		font.draw(batch, "Activities completetd: " + ActivityCounter, 800, 580);
+		font.draw(batch, "Times Eaten: " + FoodCounter, 800, 560);
+		font.draw(batch, "Day: " + CurrentDay, 10, 580);
 		font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 		batch.end();
 	}
