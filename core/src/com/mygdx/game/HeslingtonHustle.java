@@ -59,11 +59,32 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.end();
 	}
 
-	public String getCurrentDay() {
-		return days[DayCounter];
+	public int getDayCount()
+	{
+		return DayCounter;
+	}
+
+	public int getFoodCount() {
+		return FoodCounter;
+	}
+
+	public int getActivityCount() {
+		return ActivityCounter;
 	}
 
 	public void IncrementDayCount() {
 		DayCounter++;
+	}
+
+	public void IncrementFoodCount() {
+		FoodCounter++;
+	}
+
+	public void IncrementActivityCount() {
+		ActivityCounter++;
+	}
+
+	public String getCurrentDayName() {
+		return days[DayCounter];
 	}
 }
