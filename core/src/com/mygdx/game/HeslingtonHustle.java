@@ -19,27 +19,27 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	private int DayCounter;
 	BitmapFont font;
 
-	
 	@Override
 	public void create () {
-		batch 	   	 	= new SpriteBatch();
-		house 	   	 	= new Texture("house.jpg");
-		study 	    	= new Texture("placetoeat.jpg");
-		lake 	     	= new Texture("lake.jpg");
-		food 	   	 	= new Texture("glasshouse.jpg");
-		font 	   	 	= new BitmapFont();
-		batch 	   	 	= new SpriteBatch();
-		house 	   	 	= new Texture("house.jpg");
-		study 	   	    = new Texture("placetoeat.jpg");
-		lake  	   	 	= new Texture("lake.jpg");
-		food  	     	= new Texture("glasshouse.jpg");
-		font  	   	 	= new BitmapFont();
-		CurrentDay 	 	= days[DayCounter];
-		DayCounter      = 0;
-		FoodCounter  	= 0;
+		batch = new SpriteBatch();
+		house = new Texture("house.jpg");
+		study = new Texture("placetoeat.jpg");
+		lake  = new Texture("lake.jpg");
+		food  = new Texture("glasshouse.jpg");
+		font  = new BitmapFont();
+		batch = new SpriteBatch();
+		house = new Texture("house.jpg");
+		study = new Texture("placetoeat.jpg");
+		lake  = new Texture("lake.jpg");
+		food  = new Texture("glasshouse.jpg");
+		font  = new BitmapFont();
+
+		CurrentDay 		= days[DayCounter];
+		DayCounter 		= 0;
+		FoodCounter 	= 0;
 		ActivityCounter = 0;
-		DayCounter 	 	= 0;
-		CurrentDay 	 	= days[DayCounter];
+		DayCounter 		= 0;
+		CurrentDay 		= days[DayCounter];
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.draw(house, 12, 12);
 		batch.draw(lake, 400, 300);
 		batch.draw(food, 250, 250);
-		
+
 		font.draw(batch, "Day: " + CurrentDay, 25, 400);
 		font.draw(batch, "Activities completetd: " + ActivityCounter, 450, 460);
 		font.draw(batch, "Times Eaten: " + FoodCounter, 450, 440);
