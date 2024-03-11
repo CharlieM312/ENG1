@@ -12,7 +12,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	private Texture study;
 	private Texture lake;
 	private Texture food;
-	private int day_counter;
+	private int DayCounter;
 	private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 	private String CurrentDay;
 	BitmapFont font;
@@ -25,8 +25,8 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		study = new Texture("placetoeat.jpg");
 		lake = new Texture("lake.jpg");
 		food = new Texture("glasshouse.jpg");
-		day_counter = 0;
-		CurrentDay = days[day_counter];
+		DayCounter = 0;
+		CurrentDay = days[DayCounter];
 		font = new BitmapFont();
 	}
 
@@ -42,6 +42,8 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		font.draw(batch, "Day: " + CurrentDay, 25, 400);
 		batch.end();
 	}
-	
-	
+
+	public String getCurrentDay() {
+		return days[DayCounter];
+	}
 }
