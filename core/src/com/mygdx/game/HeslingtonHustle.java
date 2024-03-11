@@ -20,14 +20,14 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		house = new Texture("house.jpg");
-		study = new Texture("placetoeat.jpg");
-		lake = new Texture("lake.jpg");
-		food = new Texture("glasshouse.jpg");
+		batch 	   = new SpriteBatch();
+		house 	   = new Texture("house.jpg");
+		study 	   = new Texture("placetoeat.jpg");
+		lake  	   = new Texture("lake.jpg");
+		food  	   = new Texture("glasshouse.jpg");
 		DayCounter = 0;
 		CurrentDay = days[DayCounter];
-		font = new BitmapFont();
+		font  	   = new BitmapFont();
 	}
 
 	@Override
@@ -45,5 +45,9 @@ public class HeslingtonHustle extends ApplicationAdapter {
 
 	public String getCurrentDay() {
 		return days[DayCounter];
+	}
+
+	public void IncrementDayCount(){
+		DayCounter++;
 	}
 }
