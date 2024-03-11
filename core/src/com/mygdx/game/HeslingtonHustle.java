@@ -20,11 +20,11 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	
 	@Override
 	public void create () {
-		batch 	   = new SpriteBatch();
-		house 	   = new Texture("house.jpg");
-		study 	   = new Texture("placetoeat.jpg");
-		lake  	   = new Texture("lake.jpg");
-		food  	   = new Texture("glasshouse.jpg");
+		batch = new SpriteBatch();
+		house = new Texture("house.jpg");
+		study = new Texture("placetoeat.jpg");
+		lake  = new Texture("lake.jpg");
+		food  = new Texture("glasshouse.jpg");
 		DayCounter = 0;
 		CurrentDay = days[DayCounter];
 		font  	   = new BitmapFont();
@@ -34,12 +34,12 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	public void render () {
 		ScreenUtils.clear(1, 0, 0, 1);
 		batch.begin();
-		batch.draw(study, 120, 150);
-		batch.draw(house, 12, 12);
-		batch.draw(lake, 400, 300);
+		batch.draw(study, 340, 150);
+		batch.draw(house, 24, 24);
+		batch.draw(lake, 700, 450);
 		batch.draw(food, 250, 250);
 		font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-		font.draw(batch, "Day: " + CurrentDay, 10, 460);
+		font.draw(batch, "Day: " + CurrentDay, 10, 580);
 		batch.end();
 	}
 
