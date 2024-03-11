@@ -39,7 +39,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.draw(lake, 400, 300);
 		batch.draw(food, 250, 250);
 		font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-		font.draw(batch, "Day: " + CurrentDay, 25, 400);
+		font.draw(batch, "Day: " + CurrentDay, 10, 460);
 		batch.end();
 	}
 	
