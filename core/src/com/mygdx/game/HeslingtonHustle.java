@@ -12,7 +12,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	private Texture study;
 	private Texture lake;
 	private Texture food;
-	private int day_counter;
+	private int DayCounter;
 	private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 	private String CurrentDay;
 	private int actv_counter;
@@ -32,6 +32,14 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		actv_counter = 0;
 		CurrentDay = days[day_counter];
 		font = new BitmapFont();
+		batch 	   = new SpriteBatch();
+		house 	   = new Texture("house.jpg");
+		study 	   = new Texture("placetoeat.jpg");
+		lake  	   = new Texture("lake.jpg");
+		food  	   = new Texture("glasshouse.jpg");
+		DayCounter = 0;
+		CurrentDay = days[DayCounter];
+		font  	   = new BitmapFont();
 	}
 
 	@Override
@@ -46,8 +54,15 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		font.draw(batch, "Day: " + CurrentDay, 25, 400);
 		font.draw(batch, "Activities completetd: " + actv_counter, 450, 460);
 		font.draw(batch, "Times Eaten: " + food_counter, 450, 440);
+		font.draw(batch, "Day: " + CurrentDay, 10, 460);
 		batch.end();
 	}
-	
-	
+
+	public String getCurrentDay() {
+		return days[DayCounter];
+	}
+
+	public void IncrementDayCount(){
+		DayCounter++;
+	}
 }
