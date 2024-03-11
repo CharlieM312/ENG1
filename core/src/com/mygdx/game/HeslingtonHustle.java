@@ -7,25 +7,30 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 public class HeslingtonHustle extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
+	private Texture house;
+	private Texture food;
+	private Texture img;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("yorkimage.jpg");
+		house = new Texture("house.jpg");
+		//food = new Texture("food.jpg");
+
 	}
 
 	@Override
 	public void render () {
 		ScreenUtils.clear(1, 0, 0, 1);
 		batch.begin();
-		batch.draw(img, 0, 0);
+		//batch.draw(food, 100, 12);
+		batch.draw(house, 12, 12);
 		batch.end();
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
+		house.dispose();
 	}
 }
