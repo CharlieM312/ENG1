@@ -80,4 +80,10 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	public String getCurrentDayName() {
 		return days[DayCounter];
 	}
+
+	public void UpdateCurrentDay(){
+		IncrementDayCount();
+		CurrentDay = days[DayCounter];
+		//To-do: Redraw screen
+	}
 }
