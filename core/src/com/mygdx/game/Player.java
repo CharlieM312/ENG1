@@ -82,6 +82,10 @@ public class Player {
         return currentState;
     }
 
+    public Direction GetCurrentDirection() {
+        return currentDirection;
+    }
+
     public float GetXPosition() {
         return bounds.x;
     }
@@ -100,10 +104,6 @@ public class Player {
     {
         bounds.y = y;
         position.y = y;
-    }
-
-    public Direction GetCurrentDirection() {
-        return currentDirection;
     }
 }
 

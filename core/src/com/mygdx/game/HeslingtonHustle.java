@@ -53,7 +53,10 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 
 		batch.begin();
-		batch.draw(player.GetIdleTexture(), player.GetX(), player.GetY());
+		// Draws player
+		batch.draw(player.GetCurrentTexture()
+				, player.GetXPosition(), player.GetYPosition());
+		// Draws buildings
 		batch.draw(study, 340, 150);
 		batch.draw(house, 24, 24);
 		batch.draw(lake, 700, 450);
@@ -62,31 +65,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		font.draw(batch, "Times Eaten: " + foodCounter, 800, 560);
 		font.draw(batch, "Day: " + currentDay, 10, 580);
 		font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-			float currentY = player.GetY();
-			player.SetY(currentY += 200 * Gdx.graphics.getDeltaTime());
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-			float currentX = player.GetX();
-			player.SetX(currentX -= 200 * Gdx.graphics.getDeltaTime());
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-			float currentX = player.GetX();
-			player.SetX(currentX += 200 * Gdx.graphics.getDeltaTime());
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-			float currentY = player.GetY();
-			player.SetY( currentY -= 200 * Gdx.graphics.getDeltaTime());
-		}
-		
-		if (player.GetX() < 0)
-			player.SetX(0);
-		if (player.GetX() > 1000 - 64)
-			player.SetX(1000 - 64);
-		if (player.GetY() < 0)
-			player.SetY(0);
-		if (player.GetY() > 600 - 64)
-			player.SetY(600 - 64);
+
 		batch.end();
 	}
 
