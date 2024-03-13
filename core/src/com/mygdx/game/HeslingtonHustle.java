@@ -1,14 +1,21 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.Player;
+import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.gdx.math.Rectangle;
 
 public class HeslingtonHustle extends ApplicationAdapter {
+	private Player player;
+	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture house;
 	private Texture study;
@@ -23,16 +30,16 @@ public class HeslingtonHustle extends ApplicationAdapter {
 
 	@Override
 	public void create () {
+		player = new Player(new Vector2(168, 20));
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false, 1000, 600);
 		batch = new SpriteBatch();
-
 		house = new Texture("house.jpg");
 		study = new Texture("placetoeat.jpg");
 		lake  = new Texture("lake.jpg");
 		food  = new Texture("glasshouse.jpg");
 		font  = new BitmapFont();
 
-
-		currentDay = days[dayCounter];
 		dayCounter = 0;
 		foodCounter = 0;
 		activityCounter = 0;
@@ -42,8 +49,11 @@ public class HeslingtonHustle extends ApplicationAdapter {
 
 	@Override
 	public void render () {
-		ScreenUtils.clear(1, 0, 0, 1);
+		ScreenUtils.clear(0, 0, 1, 1);
+		batch.setProjectionMatrix(camera.combined);
+
 		batch.begin();
+		batch.draw(player.GetIdleTexture(), player.GetX(), player.GetY());
 		batch.draw(study, 340, 150);
 		batch.draw(house, 24, 24);
 		batch.draw(lake, 700, 450);
@@ -52,6 +62,31 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		font.draw(batch, "Times Eaten: " + foodCounter, 800, 560);
 		font.draw(batch, "Day: " + currentDay, 10, 580);
 		font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+			float currentY = player.GetY();
+			player.SetY(currentY += 200 * Gdx.graphics.getDeltaTime());
+		}
+		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+			float currentX = player.GetX();
+			player.SetX(currentX -= 200 * Gdx.graphics.getDeltaTime());
+		}
+		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+			float currentX = player.GetX();
+			player.SetX(currentX += 200 * Gdx.graphics.getDeltaTime());
+		}
+		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+			float currentY = player.GetY();
+			player.SetY( currentY -= 200 * Gdx.graphics.getDeltaTime());
+		}
+		
+		if (player.GetX() < 0)
+			player.SetX(0);
+		if (player.GetX() > 1000 - 64)
+			player.SetX(1000 - 64);
+		if (player.GetY() < 0)
+			player.SetY(0);
+		if (player.GetY() > 600 - 64)
+			player.SetY(600 - 64);
 		batch.end();
 	}
 

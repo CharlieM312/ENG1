@@ -23,15 +23,13 @@ public class Player {
     private Texture idleTexture
             , walkingUpTexture
             , walkingRightTexture
+            , walkingDownTexture
             , walkingLeftTexture;
             
-    static final float SPEED = 2f;
-    static final float SIZE  = 64;
+
 
     // Player position within the map
     private Vector2 position;
-    // Used to calculate the speed that the player moves
-    private Vector2 velocity;
     // Bounding box to detect player collision
     private Rectangle bounds;
 
@@ -40,39 +38,72 @@ public class Player {
 
     public Player(Vector2 position) {
         idleTexture = new Texture("player_idle_texture.png");
+        bounds = new Rectangle();
+        bounds.setPosition(position);
+        bounds.height = 64;
+        bounds.width = 64;
         this.position = position;
-        bounds.height = SIZE;
-        bounds.width = SIZE;
         currentState = State.IDLE;
         currentDirection = Direction.LEFT;
     }
-<<<<<<< Updated upstream
-=======
     
-    public Texture GetIdleTexture()
-    {
-        return idleTexture;
+    public Texture GetCurrentTexture() {
+        if (currentState == State.IDLE)
+            return idleTexture;
+
+        switch (currentDirection) {
+            case UP:
+                return walkingUpTexture;
+            case RIGHT:
+                return walkingRightTexture;
+            case DOWN:
+                return walkingDownTexture;
+            case LEFT:
+                return walkingLeftTexture;
+            default:
+                return idleTexture;   
+        }
     }
 
-    public Vector2 GetPosition()
-    {
+    public Vector2 GetPosition() {
         return position;
     }
 
-    public Rectangle GetBounds()
-    {
+    public void setPosition(Vector2 position) {
+        bounds.setPosition(position);
+        this.position = position;
+    }
+
+    public Rectangle GetBounds() {
         return bounds;
     }
 
-    public State GetCurrentState()
-    {
+    public State GetCurrentState() {
         return currentState;
     }
 
-    public Direction GetCurrentDirection()
+    public float GetXPosition() {
+        return bounds.x;
+    }
+
+    public void SetXPosition(float x) {
+        bounds.x = x;
+        position.x = x;
+    }
+
+    public float GetYPosition()
     {
+        return bounds.y;
+    }
+
+    public void SetYPosition(float y)
+    {
+        bounds.y = y;
+        position.y = y;
+    }
+
+    public Direction GetCurrentDirection() {
         return currentDirection;
     }
->>>>>>> Stashed changes
 }
 
