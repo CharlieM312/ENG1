@@ -9,9 +9,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.mygdx.game.Player;
-import com.badlogic.gdx.utils.TimeUtils;
-import com.badlogic.gdx.math.Rectangle;
 
 public class HeslingtonHustle extends ApplicationAdapter {
 	private Player player;
@@ -56,16 +53,45 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		// Draws player
 		batch.draw(player.GetCurrentTexture()
 				, player.GetXPosition(), player.GetYPosition());
+
 		// Draws buildings
 		batch.draw(study, 340, 150);
 		batch.draw(house, 24, 24);
 		batch.draw(lake, 700, 450);
 		batch.draw(food, 250, 250);
+
+		// Draws text
 		font.draw(batch, "Activities completetd: " + activityCounter, 800, 580);
 		font.draw(batch, "Times Eaten: " + foodCounter, 800, 560);
 		font.draw(batch, "Day: " + currentDay, 10, 580);
-		font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 
+		// Checks for key presses and moves player in specified direction
+		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+			float currentY = player.GetYPosition();
+			player.SetYPosition(currentY += 200 * Gdx.graphics.getDeltaTime());
+		}
+		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+			float currentX = player.GetXPosition();
+			player.SetXPosition(currentX -= 200 * Gdx.graphics.getDeltaTime());
+		}
+		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+			float currentX = player.GetXPosition();
+			player.SetXPosition(currentX += 200 * Gdx.graphics.getDeltaTime());
+		}
+		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+			float currentY = player.GetYPosition();
+			player.SetYPosition( currentY -= 200 * Gdx.graphics.getDeltaTime());
+		}
+		
+		// Checks if player is within bounds of the map after moving
+		if (player.GetXPosition() < 0)
+			player.SetXPosition(0);
+		if (player.GetXPosition() > 1000 - 64)
+			player.SetXPosition(1000 - 64);
+		if (player.GetYPosition() < 0)
+			player.SetYPosition(0);
+		if (player.GetYPosition() > 600 - 64)
+			player.SetYPosition(600 - 64);
 		batch.end();
 	}
 

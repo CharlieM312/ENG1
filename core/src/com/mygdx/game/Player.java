@@ -26,8 +26,6 @@ public class Player {
             , walkingDownTexture
             , walkingLeftTexture;
             
-
-
     // Player position within the map
     private Vector2 position;
     // Bounding box to detect player collision
