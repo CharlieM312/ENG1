@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Player {
+
     public enum State {
         IDLE,
         MOVING,
@@ -25,14 +26,6 @@ public class Player {
             , walkingRightTexture
             , walkingDownTexture
             , walkingLeftTexture;
-            
-    // Player position within the map
-//    private Vector2 position;
-    // Bounding box to detect player collision
-//    private Rectangle bounds;
-
-//    private State currentState;
-//    private Direction currentDirection;
 
     public Player(Vector2 position) {
         idleTexture = new Texture("player_idle.jpg");
@@ -111,7 +104,6 @@ public class Player {
 
     State currentState = State.IDLE;
     Direction currentDirection = Direction.LEFT;
-
     
     public Vector2 GetPosition()
     {
