@@ -11,8 +11,6 @@ public class Player {
         STUDYING,
         SLEEPING
     }  
-<<<<<<< Updated upstream
-=======
 
     public enum Direction {
         UP,
@@ -44,6 +42,5 @@ public class Player {
     {
         return position;
     }
->>>>>>> Stashed changes
 }
 
