@@ -35,7 +35,7 @@ public class Player {
 //    private Direction currentDirection;
 
     public Player(Vector2 position) {
-        idleTexture = new Texture("player_idle_texture.png");
+        idleTexture = new Texture("player_idle.jpg");
         bounds = new Rectangle();
         bounds.setPosition(position);
         bounds.height = 64;
