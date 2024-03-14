@@ -46,9 +46,9 @@ public class HeslingtonHustle extends ApplicationAdapter {
 
 	@Override
 	public void render () {
-		ScreenUtils.clear(0, 0, 1, 1);
+		ScreenUtils.clear(1, 0, 0, 1);
 		batch.setProjectionMatrix(camera.combined);
-
+		camera.update();
 		batch.begin();
 		// Draws player
 		batch.draw(player.GetCurrentTexture()
