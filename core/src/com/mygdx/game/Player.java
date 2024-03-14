@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Player {
+
     public enum State {
         IDLE,
         MOVING,
@@ -33,9 +34,23 @@ public class Player {
     Direction currentDirection = Direction.LEFT;
 
     public Player(Vector2 position) {
+<<<<<<< Updated upstream
         this.position = position;
         this.bounds.height = SIZE;
         this.bounds.width = SIZE;
+=======
+        idleTexture = new Texture("player_idle_texture.png");
+
+        bounds = new Rectangle();
+        bounds.setPosition(position);
+        bounds.height = 64;
+        bounds.width = 64;
+
+        this.position = position;
+        
+        currentState = State.IDLE;
+        currentDirection = Direction.LEFT;
+>>>>>>> Stashed changes
     }
     
     public Vector2 GetPosition()
