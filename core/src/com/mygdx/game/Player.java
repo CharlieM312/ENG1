@@ -27,12 +27,12 @@ public class Player {
             , walkingLeftTexture;
             
     // Player position within the map
-    private Vector2 position;
+//    private Vector2 position;
     // Bounding box to detect player collision
-    private Rectangle bounds;
+//    private Rectangle bounds;
 
-    private State currentState;
-    private Direction currentDirection;
+//    private State currentState;
+//    private Direction currentDirection;
 
     public Player(Vector2 position) {
         idleTexture = new Texture("player_idle_texture.png");
@@ -44,7 +44,7 @@ public class Player {
         currentState = State.IDLE;
         currentDirection = Direction.LEFT;
     }
-    
+
     public Texture GetCurrentTexture() {
         if (currentState == State.IDLE)
             return idleTexture;
@@ -61,10 +61,6 @@ public class Player {
             default:
                 return idleTexture;   
         }
-    }
-
-    public Vector2 GetPosition() {
-        return position;
     }
 
     public void setPosition(Vector2 position) {
@@ -116,11 +112,6 @@ public class Player {
     State currentState = State.IDLE;
     Direction currentDirection = Direction.LEFT;
 
-    public Player(Vector2 position) {
-        this.position = position;
-        this.bounds.height = SIZE;
-        this.bounds.width = SIZE;
-    }
     
     public Vector2 GetPosition()
     {
