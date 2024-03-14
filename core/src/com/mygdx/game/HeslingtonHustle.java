@@ -54,7 +54,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.draw(house, 24, 24);
 		batch.draw(lake, 700, 450);
 		batch.draw(food, 250, 250);
-		font.draw(batch, "Activities completetd: " + activityCounter, 800, 580);
+		font.draw(batch, "Activities completed: " + activityCounter, 800, 580);
 		font.draw(batch, "Times Eaten: " + foodCounter, 800, 560);
 		font.draw(batch, "Day: " + currentDay, 10, 580);
 		font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -93,16 +93,6 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	public void UpdateCurrentDay(){
 		IncrementDayCount();
 		currentDay = days[dayCounter];
-		ScreenUtils.clear(1, 0, 0, 1);
-		batch.begin();
-		batch.draw(study, 340, 150);
-		batch.draw(house, 24, 24);
-		batch.draw(lake, 700, 450);
-		batch.draw(food, 250, 250);
-		font.draw(batch, "Activities completetd: " + activityCounter, 800, 580);
-		font.draw(batch, "Times Eaten: " + foodCounter, 800, 560);
-		font.draw(batch, "Day: " + currentDay, 10, 580);
-		font.setColor(1.0f, 1.0f, 1.0f, 1.0f);
-		batch.end();
+		render();
 	}
 }
