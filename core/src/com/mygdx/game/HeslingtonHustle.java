@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.game.Player.Direction;
+import com.mygdx.game.Player.State;
 
 public class HeslingtonHustle extends ApplicationAdapter {
 	private Player player;
@@ -66,21 +68,35 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		font.draw(batch, "Day: " + currentDay, 10, 580);
 
 		// Checks for key presses and moves player in specified direction
+		// otherwise set the texture to idle
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+			player.SetState(State.MOVING);
+
 			float currentY = player.GetYPosition();
-			player.SetYPosition(currentY += 200 * Gdx.graphics.getDeltaTime());
+			player.SetYPosition(currentY += 180 * Gdx.graphics.getDeltaTime());
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+		 else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+			player.SetDirection(Direction.LEFT);
+			player.SetState(State.MOVING);
+
 			float currentX = player.GetXPosition();
-			player.SetXPosition(currentX -= 200 * Gdx.graphics.getDeltaTime());
+			player.SetXPosition(currentX -= 180 * Gdx.graphics.getDeltaTime());
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+		else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+			player.SetDirection(Direction.RIGHT);
+			player.SetState(State.MOVING);
+
 			float currentX = player.GetXPosition();
-			player.SetXPosition(currentX += 200 * Gdx.graphics.getDeltaTime());
+			player.SetXPosition(currentX += 180 * Gdx.graphics.getDeltaTime());
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+		else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+			player.SetState(State.MOVING);
+
 			float currentY = player.GetYPosition();
-			player.SetYPosition( currentY -= 200 * Gdx.graphics.getDeltaTime());
+			player.SetYPosition( currentY -= 180 * Gdx.graphics.getDeltaTime());
+		}
+		else {
+			player.SetState(State.IDLE);
 		}
 		
 		// Checks if player is within bounds of the map after moving

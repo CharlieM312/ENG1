@@ -34,7 +34,9 @@ public class Player {
     Direction currentDirection = Direction.LEFT;
 
     public Player(Vector2 position) {
-        idleTexture = new Texture("player_idle.jpg");
+        idleTexture         = new Texture("player_idle.jpg");
+        walkingRightTexture = new Texture("player_facing_right.jpg");
+        walkingLeftTexture  = new Texture("player_facing_left.jpg");
 
         bounds = new Rectangle();
         bounds.setPosition(position);
@@ -42,7 +44,7 @@ public class Player {
         bounds.width = 64;
 
         this.position = position;
-        
+
         currentState = State.IDLE;
         currentDirection = Direction.LEFT;
     }
@@ -52,11 +54,7 @@ public class Player {
             return idleTexture;
 
         switch (currentDirection) {
-            case UP:
-                return walkingLeftTexture;
             case RIGHT:
-                return walkingRightTexture;
-            case DOWN:
                 return walkingRightTexture;
             case LEFT:
                 return walkingLeftTexture;
@@ -78,8 +76,16 @@ public class Player {
         return currentState;
     }
 
+    public void SetState(State state) {
+        currentState = state;
+    }
+
     public Direction GetCurrentDirection() {
         return currentDirection;
+    }
+
+    public void SetDirection(Direction direction) {
+        currentDirection = direction;
     }
 
     public float GetXPosition() {
