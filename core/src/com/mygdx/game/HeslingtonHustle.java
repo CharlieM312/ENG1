@@ -20,6 +20,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	private Texture study;
 	private Texture lake;
 	private Texture food;
+	private Texture background;
 	private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 	private String currentDay;
 	private int activityCounter;
@@ -37,6 +38,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		study = new Texture("placetoeat.jpg");
 		lake  = new Texture("lake.jpg");
 		food  = new Texture("glasshouse.jpg");
+		background = new Texture("background.jpg");
 		font  = new BitmapFont();
 
 		dayCounter = 0;
@@ -55,12 +57,14 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		// Draws player
 		batch.draw(player.GetCurrentTexture()
 				, player.GetXPosition(), player.GetYPosition());
+		// Draws background
+		batch.draw(background, 0, 0);
 
 		// Draws buildings
-		batch.draw(study, 340, 150);
-		batch.draw(house, 24, 24);
-		batch.draw(lake, 700, 450);
-		batch.draw(food, 250, 250);
+		batch.draw(study, 400, 280);
+		batch.draw(house, 100, 280);
+		batch.draw(lake, 700, 470);
+		batch.draw(food, 250, 470);
 
 		// Draws text
 		font.draw(batch, "Activities completetd: " + activityCounter, 800, 580);
