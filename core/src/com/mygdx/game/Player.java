@@ -22,18 +22,27 @@ public class Player {
     }
 
     private Texture idleTexture
-            , walkingUpTexture
             , walkingRightTexture
-            , walkingDownTexture
             , walkingLeftTexture;
+
+    // Player position within the map
+    Vector2 position;
+    // Bounding box to detect player collision
+    Rectangle bounds;
+
+    State currentState = State.IDLE;
+    Direction currentDirection = Direction.LEFT;
 
     public Player(Vector2 position) {
         idleTexture = new Texture("player_idle.jpg");
+
         bounds = new Rectangle();
         bounds.setPosition(position);
         bounds.height = 64;
         bounds.width = 64;
+
         this.position = position;
+        
         currentState = State.IDLE;
         currentDirection = Direction.LEFT;
     }
@@ -44,11 +53,11 @@ public class Player {
 
         switch (currentDirection) {
             case UP:
-                return walkingUpTexture;
+                return walkingLeftTexture;
             case RIGHT:
                 return walkingRightTexture;
             case DOWN:
-                return walkingDownTexture;
+                return walkingRightTexture;
             case LEFT:
                 return walkingLeftTexture;
             default:
@@ -92,18 +101,6 @@ public class Player {
         bounds.y = y;
         position.y = y;
     }
-    static final float SPEED = 2f;
-    static final float SIZE  = 0.5f;
-
-    // Player position within the map
-    Vector2 position = new Vector2();
-    // Used to calculate the speed that the player moves
-    Vector2 velocity = new Vector2();
-    // Bounding box to detect player collision
-    Rectangle bounds = new Rectangle();
-
-    State currentState = State.IDLE;
-    Direction currentDirection = Direction.LEFT;
     
     public Vector2 GetPosition()
     {
