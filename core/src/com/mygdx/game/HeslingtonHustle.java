@@ -54,11 +54,11 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 		camera.update();
 		batch.begin();
+		// Draws background
+		batch.draw(background, 0, 0);
 		// Draws player
 		batch.draw(player.GetCurrentTexture()
 				, player.GetXPosition(), player.GetYPosition());
-		// Draws background
-		//batch.draw(background, 0, 0);
 
 		// Draws buildings
 		batch.draw(study, 400, 280);
