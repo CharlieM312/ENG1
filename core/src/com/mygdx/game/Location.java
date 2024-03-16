@@ -23,7 +23,6 @@ public class Location {
         locationTexture = image;
         this.position = position;
         currentState = State.IDLE;
-
         bounds.width = width;
         bounds.height = height;
     }

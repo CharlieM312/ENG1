@@ -114,13 +114,41 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		
 		// Checks if player is within bounds of the map after moving
 		if(player.bounds.overlaps(study1.bounds))
-			player.SetXPosition(player.GetXPosition()-100);
+			if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W))
+				player.SetYPosition(player.GetYPosition()-60) ;
+			else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
+				player.SetXPosition(player.GetXPosition()+60);
+			else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.W)) 
+				player.SetYPosition(player.GetYPosition()+60);
+			else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.W))
+				player.SetXPosition(player.GetXPosition()-60);		
 		if(player.bounds.overlaps(food1.bounds))
-			player.SetXPosition(player.GetXPosition()-100);
+			if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W))
+				player.SetYPosition(player.GetYPosition()-60) ;
+			else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
+			player.SetXPosition(player.GetXPosition()+60);
+			else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.W)) 
+			player.SetYPosition(player.GetYPosition()+60);
+			else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.W))
+			player.SetXPosition(player.GetXPosition()-60);
 		if(player.bounds.overlaps(lake1.bounds))
-			player.SetXPosition(player.GetXPosition()-100);
+		if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W))
+			player.SetYPosition(player.GetYPosition()-60) ;
+		else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
+			player.SetXPosition(player.GetXPosition()+60);
+		else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.W)) 
+			player.SetYPosition(player.GetYPosition()+60);
+		else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.W))
+			player.SetXPosition(player.GetXPosition()-60);
 		if(player.bounds.overlaps(house1.bounds))
-			player.SetXPosition(player.GetXPosition()-100);
+			if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W))
+				player.SetYPosition(player.GetYPosition()-60) ;
+			else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
+				player.SetXPosition(player.GetXPosition()+60);
+			else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.W)) 
+				player.SetYPosition(player.GetYPosition()+60);
+			else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.W))
+				player.SetXPosition(player.GetXPosition()-60);
 		if (player.GetXPosition() < 0)
 			player.SetXPosition(0);
 		if (player.GetXPosition() > 1000 - 64)
