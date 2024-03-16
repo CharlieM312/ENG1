@@ -16,10 +16,14 @@ public class HeslingtonHustle extends ApplicationAdapter {
 	private Player player;
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	private Texture house;
-	private Texture study;
-	private Texture lake;
-	private Texture food;
+	//private Texture house;
+	//private Texture study;
+	//private Texture lake;
+	//private Texture food;
+	private Location house1;
+	private Location study1;
+	private Location lake1;
+	private Location food1;
 	private Texture background;
 	private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 	private String currentDay;
@@ -34,10 +38,15 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 1000, 600);
 		batch = new SpriteBatch();
-		house = new Texture("house.jpg");
-		study = new Texture("placetoeat.jpg");
-		lake  = new Texture("lake.jpg");
-		food  = new Texture("glasshouse.jpg");
+		//now uses location class to allow for collisions with the player
+		house1 = new Location(new Vector2(100, 280),64,64,new Texture("house.jpg") );
+		//house = new Texture("house.jpg");
+		study1 = new Location(new Vector2(400, 280),64,64,new Texture("placetoeat.jpg") );
+		//study = new Texture("placetoeat.jpg");
+		lake1 = new Location(new Vector2(700, 470),64,64,new Texture("lake.jpg") );
+		//lake  = new Texture("lake.jpg");
+		food1 = new Location(new Vector2(250, 470),64,64,new Texture("glasshouse.jpg") );
+		//food  = new Texture("glasshouse.jpg");
 		background = new Texture("background.jpg");
 		font  = new BitmapFont();
 
@@ -60,14 +69,14 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.draw(player.GetCurrentTexture()
 				, player.GetXPosition(), player.GetYPosition());
 
-		// Draws buildings
-		batch.draw(study, 400, 280);
-		batch.draw(house, 100, 280);
-		batch.draw(lake, 700, 470);
-		batch.draw(food, 250, 470);
+		// Draws buildings now using location class
+		batch.draw(study1.locationTexture, 400, 280);
+		batch.draw(house1.locationTexture, 100, 280);
+		batch.draw(lake1.locationTexture, 700, 470);
+		batch.draw(food1.locationTexture, 250, 470);
 
 		// Draws text
-		font.draw(batch, "Activities completetd: " + activityCounter, 800, 580);
+		font.draw(batch, "Activities completeted: " + activityCounter, 800, 580);
 		font.draw(batch, "Times Eaten: " + foodCounter, 800, 560);
 		font.draw(batch, "Day: " + currentDay, 10, 580);
 
@@ -104,6 +113,8 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		}
 		
 		// Checks if player is within bounds of the map after moving
+		if(player.bounds.overlaps(study1.bounds)  )
+			player.SetXPosition(player.GetXPosition()-100);
 		if (player.GetXPosition() < 0)
 			player.SetXPosition(0);
 		if (player.GetXPosition() > 1000 - 64)

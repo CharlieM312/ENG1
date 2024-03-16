@@ -17,10 +17,10 @@ public class Location {
     protected Rectangle bounds;
     protected State currentState;
 
-    public Location(Vector2 position, float width, float height) {
+    public Location(Vector2 position, float width, float height, Texture image) {
         bounds = new Rectangle();
         bounds.setPosition(position);
-
+        locationTexture = image;
         this.position = position;
         currentState = State.IDLE;
 
