@@ -113,7 +113,13 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		}
 		
 		// Checks if player is within bounds of the map after moving
-		if(player.bounds.overlaps(study1.bounds)  )
+		if(player.bounds.overlaps(study1.bounds))
+			player.SetXPosition(player.GetXPosition()-100);
+		if(player.bounds.overlaps(food1.bounds))
+			player.SetXPosition(player.GetXPosition()-100);
+		if(player.bounds.overlaps(lake1.bounds))
+			player.SetXPosition(player.GetXPosition()-100);
+		if(player.bounds.overlaps(house1.bounds))
 			player.SetXPosition(player.GetXPosition()-100);
 		if (player.GetXPosition() < 0)
 			player.SetXPosition(0);
