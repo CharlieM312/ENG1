@@ -76,11 +76,7 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.draw(food1.locationTexture, 250, 470);
 
 		// Draws text
-<<<<<<< HEAD
-		font.draw(batch, "Activities completeted: " + activityCounter, 800, 580);
-=======
 		font.draw(batch, "Activities completed: " + activityCounter, 800, 580);
->>>>>>> d42b1e0c1d1907b0b55cf06b444994c06dc9f59a
 		font.draw(batch, "Times Eaten: " + foodCounter, 800, 560);
 		font.draw(batch, "Day: " + currentDay, 10, 580);
 
