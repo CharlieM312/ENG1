@@ -76,33 +76,37 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		batch.draw(food1.locationTexture, 250, 470);
 
 		// Draws text
+<<<<<<< HEAD
 		font.draw(batch, "Activities completeted: " + activityCounter, 800, 580);
+=======
+		font.draw(batch, "Activities completed: " + activityCounter, 800, 580);
+>>>>>>> d42b1e0c1d1907b0b55cf06b444994c06dc9f59a
 		font.draw(batch, "Times Eaten: " + foodCounter, 800, 560);
 		font.draw(batch, "Day: " + currentDay, 10, 580);
 
 		// Checks for key presses and moves player in specified direction
 		// otherwise set the texture to idle
-		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+		if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) {
 			player.SetState(State.MOVING);
 
 			float currentY = player.GetYPosition();
 			player.SetYPosition(currentY += 180 * Gdx.graphics.getDeltaTime());
 		}
-		 else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+		 else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
 			player.SetDirection(Direction.LEFT);
 			player.SetState(State.MOVING);
 
 			float currentX = player.GetXPosition();
 			player.SetXPosition(currentX -= 180 * Gdx.graphics.getDeltaTime());
 		}
-		else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+		else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
 			player.SetDirection(Direction.RIGHT);
 			player.SetState(State.MOVING);
 
 			float currentX = player.GetXPosition();
 			player.SetXPosition(currentX += 180 * Gdx.graphics.getDeltaTime());
 		}
-		else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+		else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
 			player.SetState(State.MOVING);
 
 			float currentY = player.GetYPosition();
