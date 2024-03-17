@@ -13,6 +13,8 @@ import com.mygdx.game.Player.Direction;
 import com.mygdx.game.Player.State;
 
 public class HeslingtonHustle extends ApplicationAdapter {
+	private int upKey, rightKey, downKey, leftKey
+				, wKey, dKey, sKey, aKey;
 	private Player player;
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
@@ -34,6 +36,15 @@ public class HeslingtonHustle extends ApplicationAdapter {
 
 	@Override
 	public void create () {
+		upKey = Input.Keys.UP;
+		rightKey = Input.Keys.RIGHT;
+		downKey = Input.Keys.DOWN;
+		leftKey = Input.Keys.LEFT;
+		wKey = Input.Keys.W;
+		dKey = Input.Keys.D;
+		sKey = Input.Keys.S;
+		aKey = Input.Keys.A;
+
 		player = new Player(new Vector2(168, 20));
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 1000, 600);
@@ -59,9 +70,10 @@ public class HeslingtonHustle extends ApplicationAdapter {
 
 	@Override
 	public void render () {
-		ScreenUtils.clear(1, 0, 0, 1);
+		ScreenUtils.clear(0, 0, 0, 0);
 		batch.setProjectionMatrix(camera.combined);
 		camera.update();
+
 		batch.begin();
 		// Draws background
 		batch.draw(background, 0, 0);
@@ -80,75 +92,113 @@ public class HeslingtonHustle extends ApplicationAdapter {
 		font.draw(batch, "Times Eaten: " + foodCounter, 800, 560);
 		font.draw(batch, "Day: " + currentDay, 10, 580);
 
-		// Checks for key presses and moves player in specified direction
+		float currentX = player.GetXPosition();
+		float currentY = player.GetYPosition();
+
+		// If any directional key is pressed, set player state to moving
+		if (Gdx.input.isKeyPressed(upKey)  || Gdx.input.isKeyPressed(rightKey)
+                || Gdx.input.isKeyPressed(downKey) || Gdx.input.isKeyPressed(leftKey)
+                || Gdx.input.isKeyPressed(wKey)    || Gdx.input.isKeyPressed(dKey)
+                || Gdx.input.isKeyPressed(sKey)    || Gdx.input.isKeyPressed(aKey)) 
+		    player.SetState(State.MOVING);
+
+		// Checks for key presses and moves player in specified direction,
 		// otherwise set the texture to idle
-		if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) {
-			player.SetState(State.MOVING);
+		if ((Gdx.input.isKeyPressed(rightKey) && Gdx.input.isKeyPressed(upKey)) || 
+			(Gdx.input.isKeyPressed(dKey) && Gdx.input.isKeyPressed(wKey))) {
 
-			float currentY = player.GetYPosition();
-			player.SetYPosition(currentY += 180 * Gdx.graphics.getDeltaTime());
+			player.SetDirection(Direction.RIGHT);
+			player.setPosition(new Vector2(currentX += 180 * Gdx.graphics.getDeltaTime()
+							, currentY += 180 * Gdx.graphics.getDeltaTime()));
 		}
-		 else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
-			player.SetDirection(Direction.LEFT);
-			player.SetState(State.MOVING);
+		else if ((Gdx.input.isKeyPressed(rightKey) && Gdx.input.isKeyPressed(downKey)) ||
+		         (Gdx.input.isKeyPressed(dKey) && Gdx.input.isKeyPressed(sKey))) {
 
-			float currentX = player.GetXPosition();
+			player.SetDirection(Direction.RIGHT);
+			player.setPosition(new Vector2(currentX += 180 * Gdx.graphics.getDeltaTime()
+							, currentY -= 180 * Gdx.graphics.getDeltaTime()));
+		}
+		else if ((Gdx.input.isKeyPressed(leftKey) && Gdx.input.isKeyPressed(upKey)) || 
+		         (Gdx.input.isKeyPressed(aKey) && Gdx.input.isKeyPressed(wKey))) {
+
+			player.SetDirection(Direction.LEFT);
+			player.setPosition(new Vector2(currentX -= 180 * Gdx.graphics.getDeltaTime()
+							, currentY += 180 * Gdx.graphics.getDeltaTime()));
+		}
+		else if ((Gdx.input.isKeyPressed(leftKey) && Gdx.input.isKeyPressed(downKey)) ||
+		         (Gdx.input.isKeyPressed(aKey) && Gdx.input.isKeyPressed(sKey))) {
+
+			player.SetDirection(Direction.LEFT);
+			player.setPosition(new Vector2(currentX -= 180 * Gdx.graphics.getDeltaTime()
+							, currentY -= 180 * Gdx.graphics.getDeltaTime()));
+		}
+		else if (Gdx.input.isKeyPressed(upKey) || Gdx.input.isKeyPressed(wKey)) {
+			player.SetYPosition(currentY += (180 * Gdx.graphics.getDeltaTime()));
+		}
+		 else if (Gdx.input.isKeyPressed(leftKey) || Gdx.input.isKeyPressed(aKey)) {
+			player.SetDirection(Direction.LEFT);
 			player.SetXPosition(currentX -= 180 * Gdx.graphics.getDeltaTime());
 		}
-		else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
+		else if (Gdx.input.isKeyPressed(rightKey) || Gdx.input.isKeyPressed(dKey)) {
 			player.SetDirection(Direction.RIGHT);
-			player.SetState(State.MOVING);
-
-			float currentX = player.GetXPosition();
 			player.SetXPosition(currentX += 180 * Gdx.graphics.getDeltaTime());
 		}
-		else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
-			player.SetState(State.MOVING);
-
-			float currentY = player.GetYPosition();
-			player.SetYPosition( currentY -= 180 * Gdx.graphics.getDeltaTime());
+		else if (Gdx.input.isKeyPressed(downKey) || Gdx.input.isKeyPressed(sKey)) {
+			player.SetYPosition(currentY -= 180 * Gdx.graphics.getDeltaTime());
 		}
 		else {
 			player.SetState(State.IDLE);
 		}
 		
+		// Checks if player collides study location
+		if (player.bounds.overlaps(study1.bounds)) {
+			if (Gdx.input.isKeyPressed(upKey) || Gdx.input.isKeyPressed(wKey))
+				player.SetYPosition(currentY - 60) ;
+			else if (Gdx.input.isKeyPressed(leftKey) || Gdx.input.isKeyPressed(aKey))
+				player.SetXPosition(currentX + 60);
+			else if (Gdx.input.isKeyPressed(downKey) || Gdx.input.isKeyPressed(wKey)) 
+				player.SetYPosition(currentY + 60);
+			else if (Gdx.input.isKeyPressed(rightKey) || Gdx.input.isKeyPressed(wKey))
+				player.SetXPosition(currentX - 60);	
+		}
+
+		// Checks if player collides with food location
+		if (player.bounds.overlaps(food1.bounds)) {
+			if (Gdx.input.isKeyPressed(upKey) || Gdx.input.isKeyPressed(wKey))
+				player.SetYPosition(currentY - 60) ;
+			else if (Gdx.input.isKeyPressed(leftKey) || Gdx.input.isKeyPressed(aKey))
+				player.SetXPosition(currentX + 60);
+			else if (Gdx.input.isKeyPressed(downKey) || Gdx.input.isKeyPressed(wKey)) 
+				player.SetYPosition(currentY + 60);
+			else if (Gdx.input.isKeyPressed(rightKey) || Gdx.input.isKeyPressed(wKey))
+				player.SetXPosition(currentX - 60);
+		}
+		
+		// Checks if player collides with lake location
+		if (player.bounds.overlaps(lake1.bounds)) {
+			if (Gdx.input.isKeyPressed(upKey) || Gdx.input.isKeyPressed(wKey))
+				player.SetYPosition(currentY - 60) ;
+			else if (Gdx.input.isKeyPressed(leftKey) || Gdx.input.isKeyPressed(aKey))
+				player.SetXPosition(currentX + 60);
+			else if (Gdx.input.isKeyPressed(downKey) || Gdx.input.isKeyPressed(wKey)) 
+				player.SetYPosition(currentY + 60);
+			else if (Gdx.input.isKeyPressed(rightKey) || Gdx.input.isKeyPressed(wKey))
+				player.SetXPosition(currentX - 60);
+		}
+
+		// Checks if player collides with house location
+		if (player.bounds.overlaps(house1.bounds)) {
+			if (Gdx.input.isKeyPressed(upKey) || Gdx.input.isKeyPressed(wKey))
+				player.SetYPosition(currentY - 60) ;
+			else if (Gdx.input.isKeyPressed(leftKey) || Gdx.input.isKeyPressed(aKey))
+				player.SetXPosition(currentX + 60);
+			else if (Gdx.input.isKeyPressed(downKey) || Gdx.input.isKeyPressed(wKey)) 
+				player.SetYPosition(currentY + 60);
+			else if (Gdx.input.isKeyPressed(rightKey) || Gdx.input.isKeyPressed(wKey))
+				player.SetXPosition(currentX - 60);
+		}
+
 		// Checks if player is within bounds of the map after moving
-		if(player.bounds.overlaps(study1.bounds))
-			if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W))
-				player.SetYPosition(player.GetYPosition()-60) ;
-			else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
-				player.SetXPosition(player.GetXPosition()+60);
-			else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.W)) 
-				player.SetYPosition(player.GetYPosition()+60);
-			else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.W))
-				player.SetXPosition(player.GetXPosition()-60);		
-		if(player.bounds.overlaps(food1.bounds))
-			if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W))
-				player.SetYPosition(player.GetYPosition()-60) ;
-			else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
-			player.SetXPosition(player.GetXPosition()+60);
-			else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.W)) 
-			player.SetYPosition(player.GetYPosition()+60);
-			else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.W))
-			player.SetXPosition(player.GetXPosition()-60);
-		if(player.bounds.overlaps(lake1.bounds))
-		if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W))
-			player.SetYPosition(player.GetYPosition()-60) ;
-		else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
-			player.SetXPosition(player.GetXPosition()+60);
-		else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.W)) 
-			player.SetYPosition(player.GetYPosition()+60);
-		else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.W))
-			player.SetXPosition(player.GetXPosition()-60);
-		if(player.bounds.overlaps(house1.bounds))
-			if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W))
-				player.SetYPosition(player.GetYPosition()-60) ;
-			else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A))
-				player.SetXPosition(player.GetXPosition()+60);
-			else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.W)) 
-				player.SetYPosition(player.GetYPosition()+60);
-			else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.W))
-				player.SetXPosition(player.GetXPosition()-60);
 		if (player.GetXPosition() < 0)
 			player.SetXPosition(0);
 		if (player.GetXPosition() > 1000 - 64)
