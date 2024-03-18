@@ -92,6 +92,8 @@ public class MainMenuScreen implements Screen {
                 game.setScreen(new GameScreen(game));
             else if (isCursorOnExit())
                 Gdx.app.exit();
+            else if (isCursorOnInstructions())
+                game.setScreen(new InstructionScreen(game));
         }
     }
 
