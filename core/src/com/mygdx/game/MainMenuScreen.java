@@ -55,14 +55,17 @@ public class MainMenuScreen implements Screen {
             game.setScreen(new GameScreen(game));
             dispose();
         }
-
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.O)) {
+            game.setScreen(new OptionsScreen(game));
+            dispose();
+        }
         game.font.getData().setScale(2, 2);        
         if (isCursorOnNewGame())
         {
             game.font.setColor(Color.GRAY);
             game.font.draw(game.batch, "New game(N)", newGameButtonPosition.x, newGameButtonPosition.y);
             game.font.setColor(Color.WHITE);
-            game.font.draw(game.batch, "Options", optionsButtonPosition.x, optionsButtonPosition.y);
+            game.font.draw(game.batch, "Options(O)", optionsButtonPosition.x, optionsButtonPosition.y);
             game.font.draw(game.batch, "Instructions(I)", instructionsButtonPosition.x, instructionsButtonPosition.y);
             game.font.draw(game.batch, "Exit(Esc)", exitButtonPosition.x, exitButtonPosition.y);
         } 
@@ -70,7 +73,7 @@ public class MainMenuScreen implements Screen {
         {
             game.font.draw(game.batch, "New game(N)", newGameButtonPosition.x, newGameButtonPosition.y);
             game.font.setColor(Color.GRAY);
-            game.font.draw(game.batch, "Options", optionsButtonPosition.x, optionsButtonPosition.y);
+            game.font.draw(game.batch, "Options(O)", optionsButtonPosition.x, optionsButtonPosition.y);
             game.font.setColor(Color.WHITE);
             game.font.draw(game.batch, "Instructions(I)", instructionsButtonPosition.x, instructionsButtonPosition.y);
             game.font.draw(game.batch, "Exit(Esc)", exitButtonPosition.x, exitButtonPosition.y);
@@ -78,7 +81,7 @@ public class MainMenuScreen implements Screen {
         else if (isCursorOnInstructions()) 
         {
             game.font.draw(game.batch, "New game(N)", newGameButtonPosition.x, newGameButtonPosition.y);
-            game.font.draw(game.batch, "Options", optionsButtonPosition.x, optionsButtonPosition.y);
+            game.font.draw(game.batch, "Options(O)", optionsButtonPosition.x, optionsButtonPosition.y);
             game.font.setColor(Color.GRAY);
             game.font.draw(game.batch, "Instructions(I)", instructionsButtonPosition.x, instructionsButtonPosition.y);
             game.font.setColor(Color.WHITE);
@@ -87,7 +90,7 @@ public class MainMenuScreen implements Screen {
         else if (isCursorOnExit()) 
         {
             game.font.draw(game.batch, "New game(N)", newGameButtonPosition.x, newGameButtonPosition.y);
-            game.font.draw(game.batch, "Options", optionsButtonPosition.x, optionsButtonPosition.y);
+            game.font.draw(game.batch, "Options(O)", optionsButtonPosition.x, optionsButtonPosition.y);
             game.font.draw(game.batch, "Instructions(I)", instructionsButtonPosition.x, instructionsButtonPosition.y);
             game.font.setColor(Color.GRAY);
             game.font.draw(game.batch, "Exit(Esc)", exitButtonPosition.x, exitButtonPosition.y);
@@ -95,7 +98,7 @@ public class MainMenuScreen implements Screen {
         else {
             game.font.setColor(Color.WHITE);
             game.font.draw(game.batch, "New game(N)", newGameButtonPosition.x, newGameButtonPosition.y);
-            game.font.draw(game.batch, "Options", optionsButtonPosition.x, optionsButtonPosition.y);
+            game.font.draw(game.batch, "Options(O)", optionsButtonPosition.x, optionsButtonPosition.y);
             game.font.draw(game.batch, "Instructions(I)", instructionsButtonPosition.x, instructionsButtonPosition.y);
             game.font.draw(game.batch, "Exit(Esc)", exitButtonPosition.x, exitButtonPosition.y);
         }
