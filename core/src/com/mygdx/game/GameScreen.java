@@ -15,10 +15,10 @@ public class GameScreen implements Screen {
     int upKey, rightKey, downKey, leftKey
     , wKey, dKey, sKey, aKey;
     Player player;
-    Location house1;
-	Location study1;
-	Location lake1;
-	Location food1;
+    House house1;
+	StudyBuilding study1;
+	Lake lake1;
+	Restaurant food1;
 	Texture background;
 	String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 	String currentDay;
@@ -43,10 +43,10 @@ public class GameScreen implements Screen {
 		camera.setToOrtho(false, 1000, 600);
 
         player = new Player(new Vector2(168, 20));
-        house1 = new Location(new Vector2(100, 280),64,64,new Texture("house.jpg"));
-        study1 = new Location(new Vector2(400, 280),64,64,new Texture("placetoeat.jpg") );
-		lake1 = new Location(new Vector2(700, 470),64,64,new Texture("lake.jpg") );
-		food1 = new Location(new Vector2(250, 470),64,64,new Texture("glasshouse.jpg") );
+        house1 = new House();
+        study1 = new StudyBuilding();
+		lake1 = new Lake();
+		food1 = new Restaurant();
 		background = new Texture("background.jpg");
 
 		dayCounter = 0;
