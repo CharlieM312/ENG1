@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.graphics.Texture;
 
-public class Location {
+public class GameLocation {
     public enum State {
         IDLE,
         INTERACTING_WITH_PLAYER
@@ -17,14 +17,9 @@ public class Location {
     protected Rectangle bounds;
     protected State currentState;
 
-    public Location(Vector2 position, float width, float height, Texture image) {
+    public GameLocation() {
         bounds = new Rectangle();
-        bounds.setPosition(position);
-        locationTexture = image;
-        this.position = position;
         currentState = State.IDLE;
-        bounds.width = width;
-        bounds.height = height;
     }
 
     public Rectangle GetBounds() {
