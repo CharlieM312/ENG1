@@ -34,6 +34,10 @@ public class InstructionScreen implements Screen {
             game.setScreen(new GameScreen(game));
             dispose();
         }
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+            game.setScreen(new MainMenuScreen(game));
+            dispose();
+        }
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -42,48 +43,61 @@ public class MainMenuScreen implements Screen {
         game.font.setColor(Color.WHITE);
         game.font.draw(game.batch, "Heslington Hustle", 340, 300);
 
+        if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
+            game.setScreen(new InstructionScreen(game));
+            dispose();
+        }
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+            Gdx.app.exit();
+            dispose();
+        }
+        else if (Gdx.input.isKeyJustPressed(Input.Keys.N)) {
+            game.setScreen(new GameScreen(game));
+            dispose();
+        }
+
         game.font.getData().setScale(2, 2);        
         if (isCursorOnNewGame())
         {
             game.font.setColor(Color.GRAY);
-            game.font.draw(game.batch, "New game", newGameButtonPosition.x, newGameButtonPosition.y);
+            game.font.draw(game.batch, "New game(N)", newGameButtonPosition.x, newGameButtonPosition.y);
             game.font.setColor(Color.WHITE);
             game.font.draw(game.batch, "Options", optionsButtonPosition.x, optionsButtonPosition.y);
-            game.font.draw(game.batch, "Instructions", instructionsButtonPosition.x, instructionsButtonPosition.y);
-            game.font.draw(game.batch, "Exit", exitButtonPosition.x, exitButtonPosition.y);
+            game.font.draw(game.batch, "Instructions(I)", instructionsButtonPosition.x, instructionsButtonPosition.y);
+            game.font.draw(game.batch, "Exit(Esc)", exitButtonPosition.x, exitButtonPosition.y);
         } 
         else if (isCursorOnOptions()) 
         {
-            game.font.draw(game.batch, "New game", newGameButtonPosition.x, newGameButtonPosition.y);
+            game.font.draw(game.batch, "New game(N)", newGameButtonPosition.x, newGameButtonPosition.y);
             game.font.setColor(Color.GRAY);
             game.font.draw(game.batch, "Options", optionsButtonPosition.x, optionsButtonPosition.y);
             game.font.setColor(Color.WHITE);
-            game.font.draw(game.batch, "Instructions", instructionsButtonPosition.x, instructionsButtonPosition.y);
-            game.font.draw(game.batch, "Exit", exitButtonPosition.x, exitButtonPosition.y);
+            game.font.draw(game.batch, "Instructions(I)", instructionsButtonPosition.x, instructionsButtonPosition.y);
+            game.font.draw(game.batch, "Exit(Esc)", exitButtonPosition.x, exitButtonPosition.y);
         }
         else if (isCursorOnInstructions()) 
         {
-            game.font.draw(game.batch, "New game", newGameButtonPosition.x, newGameButtonPosition.y);
+            game.font.draw(game.batch, "New game(N)", newGameButtonPosition.x, newGameButtonPosition.y);
             game.font.draw(game.batch, "Options", optionsButtonPosition.x, optionsButtonPosition.y);
             game.font.setColor(Color.GRAY);
-            game.font.draw(game.batch, "Instructions", instructionsButtonPosition.x, instructionsButtonPosition.y);
+            game.font.draw(game.batch, "Instructions(I)", instructionsButtonPosition.x, instructionsButtonPosition.y);
             game.font.setColor(Color.WHITE);
-            game.font.draw(game.batch, "Exit", exitButtonPosition.x, exitButtonPosition.y);
+            game.font.draw(game.batch, "Exit(Esc)", exitButtonPosition.x, exitButtonPosition.y);
         }
         else if (isCursorOnExit()) 
         {
-            game.font.draw(game.batch, "New game", newGameButtonPosition.x, newGameButtonPosition.y);
+            game.font.draw(game.batch, "New game(N)", newGameButtonPosition.x, newGameButtonPosition.y);
             game.font.draw(game.batch, "Options", optionsButtonPosition.x, optionsButtonPosition.y);
-            game.font.draw(game.batch, "Instructions", instructionsButtonPosition.x, instructionsButtonPosition.y);
+            game.font.draw(game.batch, "Instructions(I)", instructionsButtonPosition.x, instructionsButtonPosition.y);
             game.font.setColor(Color.GRAY);
-            game.font.draw(game.batch, "Exit", exitButtonPosition.x, exitButtonPosition.y);
+            game.font.draw(game.batch, "Exit(Esc)", exitButtonPosition.x, exitButtonPosition.y);
         }
         else {
             game.font.setColor(Color.WHITE);
-            game.font.draw(game.batch, "New game", newGameButtonPosition.x, newGameButtonPosition.y);
+            game.font.draw(game.batch, "New game(N)", newGameButtonPosition.x, newGameButtonPosition.y);
             game.font.draw(game.batch, "Options", optionsButtonPosition.x, optionsButtonPosition.y);
-            game.font.draw(game.batch, "Instructions", instructionsButtonPosition.x, instructionsButtonPosition.y);
-            game.font.draw(game.batch, "Exit", exitButtonPosition.x, exitButtonPosition.y);
+            game.font.draw(game.batch, "Instructions(I)", instructionsButtonPosition.x, instructionsButtonPosition.y);
+            game.font.draw(game.batch, "Exit(Esc)", exitButtonPosition.x, exitButtonPosition.y);
         }
         game.batch.end();
 
