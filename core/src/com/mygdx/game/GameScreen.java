@@ -48,7 +48,6 @@ public class GameScreen implements Screen {
 		lake1 = new Lake();
 		food1 = new Restaurant();
 		background = new Texture("background.jpg");
-
 		dayCounter = 0;
 		foodCounter = 0;
 		activityCounter = 0;

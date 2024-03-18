@@ -1,16 +1,16 @@
 package com.mygdx.game;
 
-import javax.tools.JavaFileManager.Location;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Rectangle;
+
 import com.badlogic.gdx.math.Vector2;
 
 public class House extends GameLocation {
 
     public House() {
-        this.locationTexture = new Texture("house.jpg");
-        this.position = new Vector2(168, 20);
-        this.bounds.x = 64;
-        this.bounds.y = 64;
+        locationTexture = new Texture("house.jpg");
+        position = new Vector2(100, 280);
+        bounds.setPosition(position);
+        bounds.width = 64;
+        bounds.height = 64;
     }
 }

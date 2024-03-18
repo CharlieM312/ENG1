@@ -5,9 +5,10 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Lake extends GameLocation {
     public Lake() {
-        this.locationTexture = new Texture("lake.jpg");
-        this.position = new Vector2(700, 470);
-        this.bounds.x = 64;
-        this.bounds.y = 64;
+        locationTexture = new Texture("lake.jpg");
+        position = new Vector2(700, 470);
+        bounds.setPosition(position);
+        bounds.width = 64;
+        bounds.height = 64;
     }
 }

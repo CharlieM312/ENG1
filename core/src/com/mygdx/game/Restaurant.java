@@ -5,9 +5,10 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Restaurant extends GameLocation {
     public Restaurant() {
-        this.locationTexture = new Texture("restaurant.jpg");
-        this.position = new Vector2(250, 470);
-        this.bounds.x = 64;
-        this.bounds.y = 64;
+        locationTexture = new Texture("restaurant.jpg");
+        position = new Vector2(250, 470);
+        bounds.setPosition(position);
+        bounds.width = 64;
+        bounds.height = 64;
     }
 }
