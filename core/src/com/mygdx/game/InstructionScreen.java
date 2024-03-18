@@ -27,7 +27,7 @@ public class InstructionScreen implements Screen {
         camera.update();
         game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
-        game.batch.draw(instructionScreen, 25, 200);
+        game.batch.draw(instructionScreen, 150, 200);
         game.batch.end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
