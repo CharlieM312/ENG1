@@ -1,14 +1,13 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.mygdx.game.Player.Direction;
-import com.mygdx.game.Player.State;
+import com.mygdx.game.House.HouseState;
+import com.mygdx.game.Player.playerState;
 
 public class GameScreen implements Screen {
     final HeslingtonHustle game;
@@ -87,26 +86,33 @@ public class GameScreen implements Screen {
 		game.font.draw(game.batch, "Day: " + currentDay, 10, 580);
         game.batch.end();
 		
-		player.CheckForInput();
+		if (house.GetState() == HouseState.INTERACTING) {
+			
+		}
+
+		if (player.GetCurrentPlayerState() != playerState.LOCKED)
+			player.CheckForInput();
 		
 		// Checks if player collides study location
 		if (player.bounds.overlaps(piazza.bounds)) {
-			player.SetState(State.LOCKED);
+			player.SetState(playerState.LOCKED);
+			
 		}
 
 		// Checks if player collides with food location
 		if (player.bounds.overlaps(glasshouse.bounds)) {
-			player.SetState(State.LOCKED);
+			player.SetState(playerState.LOCKED);
 		}
 		
 		// Checks if player collides with lake location
 		if (player.bounds.overlaps(lake.bounds)) {
-			player.SetState(State.LOCKED);
+			player.SetState(playerState.LOCKED);
 		}
 
 		// Checks if player collides with house location
 		if (player.bounds.overlaps(house.bounds)) {
-			player.SetState(State.LOCKED);
+			player.SetState(playerState.LOCKED);
+			house.SetState(HouseState.INTERACTING);
 		}
 
 		// Checks if player is within bounds of the map after moving

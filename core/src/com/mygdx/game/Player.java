@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Player {
 
-    public enum State {
+    public enum playerState {
         IDLE,
         LOCKED,
         MOVING,
@@ -33,7 +33,7 @@ public class Player {
     // Bounding box to detect player collision
     Rectangle bounds;
 
-    State currentState = State.IDLE;
+    playerState currentplayerState = playerState.IDLE;
     Direction currentDirection = Direction.LEFT;
 
     public Player(Vector2 position) {
@@ -48,12 +48,12 @@ public class Player {
 
         this.position = position;
 
-        currentState = State.IDLE;
+        currentplayerState = playerState.IDLE;
         currentDirection = Direction.LEFT;
     }
 
     public Texture GetCurrentTexture() {
-        if (currentState == State.IDLE || currentState == State.LOCKED)
+        if (currentplayerState == playerState.IDLE || currentplayerState == playerState.LOCKED)
             return idleTexture;
 
         switch (currentDirection) {
@@ -89,7 +89,7 @@ public class Player {
 		    || Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.LEFT)
 			|| Gdx.input.isKeyPressed(Input.Keys.W)    || Gdx.input.isKeyPressed(Input.Keys.D)
 			|| Gdx.input.isKeyPressed(Input.Keys.S)    || Gdx.input.isKeyPressed(Input.Keys.A)) 
-			SetState(State.MOVING);
+			SetState(playerState.MOVING);
 
         if ((Gdx.input.isKeyPressed(Input.Keys.RIGHT) && Gdx.input.isKeyPressed(Input.Keys.UP)) || 
             (Gdx.input.isKeyPressed(Input.Keys.D)     && Gdx.input.isKeyPressed(Input.Keys.W))) {
@@ -128,7 +128,7 @@ public class Player {
             MoveDown();
         }
         else {
-            SetState(State.IDLE);
+            SetState(playerState.IDLE);
         }
     }
     
@@ -142,12 +142,12 @@ public class Player {
         return bounds;
     }
 
-    public State GetCurrentState() {
-        return currentState;
+    public playerState GetCurrentPlayerState() {
+        return currentplayerState;
     }
 
-    public void SetState(State state) {
-        currentState = state;
+    public void SetState(playerState playerState) {
+        currentplayerState = playerState;
     }
 
     public Direction GetCurrentDirection() {
