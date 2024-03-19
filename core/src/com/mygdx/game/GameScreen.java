@@ -226,15 +226,23 @@ public class GameScreen implements Screen {
 		// If it is sunday then progress to end the game
 		if (currentDay == "Sunday") {
 			// Set screen to end game screen
-		}
+			game.setScreen(new GameOverScreen(game));
+			dispose();
 
-		IncrementDayCount();
-		UpdateCurrentDay();
+		}
+		else 
+		{	
+			//changes the current day
+			IncrementDayCount();
+			UpdateCurrentDay();
+			// Resets player energy level to 100
+			player.ModifyEnergyLevel(100);
+			// Resets player position to default for new day
+			player.setPosition(new Vector2(168, 20));
+		}
 		
-		// Resets player energy level to 100
-		player.ModifyEnergyLevel(100);
-		// Resets player position to default for new day
-		player.setPosition(new Vector2(168, 20));
+		
+		
 	}
 
 	public void UpdateCurrentDay() {
