@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-
+// Implements Game Over Screen
 public class GameOverScreen implements Screen {
     final HeslingtonHustle game;
     OrthographicCamera camera;
@@ -22,6 +22,7 @@ public class GameOverScreen implements Screen {
         finalscore = 0;
 
     }
+    // Prints final score on the screen
     @Override
     public void render(float delta) {
         ScreenUtils.clear(Color.BLACK);
