@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class HeslingtonHustle extends Game {
     SpriteBatch batch;
 	BitmapFont font;
-
+	// Starts the game and creates a new main menu screen
 	@Override
 	public void create () {
 		batch = new SpriteBatch();

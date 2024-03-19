@@ -2,7 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
-
+// Defines Resturant as a GameLocation
 public class Restaurant extends GameLocation {
     public Restaurant() {
         locationTexture = new Texture("restaurant.jpg");

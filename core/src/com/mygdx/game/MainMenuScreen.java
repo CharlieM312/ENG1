@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
-
+// Defines the main menu screen
 public class MainMenuScreen implements Screen {
     final HeslingtonHustle game;
     OrthographicCamera camera;
@@ -30,7 +30,7 @@ public class MainMenuScreen implements Screen {
         instructionsButtonPosition = new Vector2(440, 150);
         exitButtonPosition = new Vector2(440, 110);
     }
-
+    // Renders the main menu screen
     @Override
     public void render(float delta) {
         ScreenUtils.clear(Color.BLACK);
@@ -42,7 +42,7 @@ public class MainMenuScreen implements Screen {
         game.font.getData().setScale(3, 3);
         game.font.setColor(Color.WHITE);
         game.font.draw(game.batch, "Heslington Hustle", 340, 300);
-
+        // Checks for user input to start the game, view the instructions, or exit the game
         if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
             game.setScreen(new InstructionScreen(game));
             dispose();
@@ -59,6 +59,7 @@ public class MainMenuScreen implements Screen {
             game.setScreen(new OptionsScreen(game));
             dispose();
         }
+        // Changes the font depending on whether the cursor is hovering over an option
         game.font.getData().setScale(2, 2);        
         if (isCursorOnNewGame())
         {
@@ -103,7 +104,7 @@ public class MainMenuScreen implements Screen {
             game.font.draw(game.batch, "Exit(Esc)", exitButtonPosition.x, exitButtonPosition.y);
         }
         game.batch.end();
-
+        // Checks if the user has clicked on an option
         if (Gdx.input.isTouched()) {
             if (isCursorOnNewGame())
                 game.setScreen(new GameScreen(game));

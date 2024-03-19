@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-
+// Defines the InstructionScreen
 public class InstructionScreen implements Screen {
 
     final HeslingtonHustle game;
@@ -22,6 +22,7 @@ public class InstructionScreen implements Screen {
     }
 
     @Override
+    // Renders the instruction screen
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0.2f, 1);
         camera.update();
@@ -29,7 +30,7 @@ public class InstructionScreen implements Screen {
         game.batch.begin();
         game.batch.draw(instructionScreen, 150, 200);
         game.batch.end();
-
+        // Checks for user input to return to the main menu or start the game
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             game.setScreen(new GameScreen(game));
             dispose();

@@ -7,7 +7,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Player {
-
+    // Defines all the different player states
     public enum playerState {
         IDLE,
         LOCKED,
@@ -17,14 +17,14 @@ public class Player {
         STUDYING,
         SLEEPING
     }  
-
+    // Defines all the different directions the player can travel in
     public enum Direction {
         UP,
         RIGHT,
         DOWN,
         LEFT
     }
-
+    // Defines the different textures the player can have
     private Texture idleTexture
             , walkingRightTexture
             , walkingLeftTexture;
@@ -52,7 +52,7 @@ public class Player {
         currentplayerState = playerState.IDLE;
         currentDirection = Direction.LEFT;
     }
-
+    // Gets the current texture of the player depending on what direction the player is moving in
     public Texture GetCurrentTexture() {
         if (currentplayerState == playerState.IDLE || currentplayerState == playerState.LOCKED)
             return idleTexture;
@@ -84,7 +84,7 @@ public class Player {
         SetDirection(Direction.LEFT);
         SetXPosition(position.x -= 180 * Gdx.graphics.getDeltaTime());
     }
-
+    // Checks for user input and if so sets the player state to moving, if not sets the player state to idle
     public void CheckForInput() {
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)      || Gdx.input.isKeyPressed(Input.Keys.RIGHT)
 		    || Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.LEFT)
@@ -136,7 +136,7 @@ public class Player {
             SetState(playerState.IDLE);
         }
     }
-    
+    // Moves the player 10 pixels back from the location they are currently in when the user wishes to exit
     public void exitLocation() {
         switch (currentDirection) {
             case UP:
@@ -167,7 +167,7 @@ public class Player {
     public playerState GetCurrentPlayerState() {
         return currentplayerState;
     }
-
+    
     public void SetState(playerState playerState) {
         currentplayerState = playerState;
     }
