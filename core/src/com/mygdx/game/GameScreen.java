@@ -13,9 +13,6 @@ import com.mygdx.game.Player.playerState;
 public class GameScreen implements Screen {
     final HeslingtonHustle game;
 
-    int upKey, rightKey, downKey, leftKey
-    , wKey, dKey, sKey, aKey;
-
     Player player;
     House house;
 	StudyBuilding piazza;
@@ -35,15 +32,6 @@ public class GameScreen implements Screen {
 
     public GameScreen(final HeslingtonHustle game) {
         this.game = game;
-
-        upKey    = Input.Keys.UP;
-		rightKey = Input.Keys.RIGHT;
-		downKey  = Input.Keys.DOWN;
-		leftKey  = Input.Keys.LEFT;
-		wKey     = Input.Keys.W;
-		dKey     = Input.Keys.D;
-		sKey     = Input.Keys.S;
-		aKey     = Input.Keys.A;
 
         camera = new OrthographicCamera();
 		camera.setToOrtho(false, 1000, 600);
