@@ -109,7 +109,7 @@ public class GameScreen implements Screen {
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
 				piazza.SetCurrentState(locationState.IDLE);
-				activityCounter += 1;
+				IncrementActivityCount();
 				
 			}
 			else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
@@ -126,7 +126,7 @@ public class GameScreen implements Screen {
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
 				glasshouse.SetCurrentState(locationState.IDLE);
-				foodCounter += 1;
+				IncrementFoodCount();
 			}
 			else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
 				player.SetState(playerState.IDLE);
@@ -142,7 +142,8 @@ public class GameScreen implements Screen {
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
 				lake.SetCurrentState(locationState.IDLE);
-				activityCounter += 1;
+				IncrementActivityCount();
+				
 				
 			}
 			else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
