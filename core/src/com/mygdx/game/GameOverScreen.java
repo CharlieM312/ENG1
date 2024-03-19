@@ -32,8 +32,8 @@ public class GameOverScreen implements Screen {
         game.batch.draw(background, 0, 0);
         game.font.getData().setScale(3, 3);
         game.font.setColor(Color.WHITE);
-        game.font.draw(game.batch, "Heslington Hustle", 340, 300);
-        game.font.draw(game.batch, "Your final score was: " + finalscore, 340,250);
+        game.font.draw(game.batch, "Heslington Hustle", 320, 300);
+        game.font.draw(game.batch, "Your final score was: " + finalscore, 320,250);
         game.batch.end();
     }
 
