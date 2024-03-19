@@ -25,7 +25,8 @@ public class GameScreen implements Screen {
 
 	String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 	String currentDay;
-
+	
+	
 	int activityCounter;
 	int foodCounter;
 	int dayCounter;
@@ -85,6 +86,7 @@ public class GameScreen implements Screen {
 		game.font.draw(game.batch, "Activities completed: " + activityCounter, 800, 580);
 		game.font.draw(game.batch, "Times Eaten: " + foodCounter, 800, 560);
 		game.font.draw(game.batch, "Day: " + currentDay, 10, 580);
+		game.font.draw(game.batch, "Energy: " + player.GetEnergy(), 800, 540);
 
 		// If player is not interacting with a building and their state is not set to locked,
 		// check for directional input keys
