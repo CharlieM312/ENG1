@@ -9,6 +9,9 @@ public class GameLocation {
         IDLE,
         INTERACTING_WITH_PLAYER
     }
+    
+    // The amount of energy that interacting with the location decreases/increases for the player
+    protected int energyModifier;
 
     protected Texture locationTexture;
 
@@ -21,6 +24,10 @@ public class GameLocation {
         currentState = locationState.IDLE;
         bounds = new Rectangle();
         currentState = locationState.IDLE;
+    }
+
+    public int GetEnergyModifier() {
+        return energyModifier;
     }
 
     public Rectangle GetBounds() {

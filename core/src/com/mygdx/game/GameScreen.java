@@ -99,6 +99,7 @@ public class GameScreen implements Screen {
 		// Sets up menu to allow the player to interact with the Piazza building
 		if (piazza.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
+				player.ModifyEnergyLevel(piazza.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
 				piazza.SetCurrentState(locationState.IDLE);
@@ -113,6 +114,7 @@ public class GameScreen implements Screen {
 		// Sets up menu to allow the player to interact with the glasshouse
 		if (glasshouse.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
+				player.ModifyEnergyLevel(glasshouse.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
 				glasshouse.SetCurrentState(locationState.IDLE);
@@ -127,6 +129,7 @@ public class GameScreen implements Screen {
 		// Sets up menu to allow the player to interact with the lake
 		if (lake.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
+				player.ModifyEnergyLevel(lake.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
 				lake.SetCurrentState(locationState.IDLE);
@@ -141,6 +144,7 @@ public class GameScreen implements Screen {
 		// Sets up menu to allow the player to interact with the house
 		if (house.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
+				player.ModifyEnergyLevel(house.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
 				house.SetCurrentState(locationState.IDLE);

@@ -24,6 +24,10 @@ public class Player {
         DOWN,
         LEFT
     }
+
+    // The players energy level. range between 0 - 100.
+    private int energy;
+
     // Defines the different textures the player can have
     private Texture idleTexture
             , walkingRightTexture
@@ -38,6 +42,7 @@ public class Player {
     Direction currentDirection = Direction.LEFT;
 
     public Player(Vector2 position) {
+        energy = 100;
         idleTexture         = new Texture("player_idle.jpg");
         walkingRightTexture = new Texture("player_facing_right.jpg");
         walkingLeftTexture  = new Texture("player_facing_left.jpg");
@@ -52,6 +57,27 @@ public class Player {
         currentplayerState = playerState.IDLE;
         currentDirection = Direction.LEFT;
     }
+
+    public int GetEnergy() {
+        return energy;
+    }
+
+    // Takes energy modifier from location and either increases or decreases player energy
+    public void ModifyEnergyLevel(int energyModifier) {
+        energy += energyModifier;
+        checkEnergyLevel();
+    }
+
+    // Check that energy is within bounds (0-100)
+    private void checkEnergyLevel() {
+        if (energy > 100) {
+            energy = 100;
+        }
+        else if (energy < 0) {
+            energy = 0;
+        }
+    }
+
     // Gets the current texture of the player depending on what direction the player is moving in
     public Texture GetCurrentTexture() {
         if (currentplayerState == playerState.IDLE || currentplayerState == playerState.LOCKED)
