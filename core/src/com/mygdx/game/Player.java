@@ -43,9 +43,9 @@ public class Player {
 
     public Player(Vector2 position) {
         energy = 100;
-        idleTexture         = new Texture("player_idle.jpg");
-        walkingRightTexture = new Texture("player_facing_right.jpg");
-        walkingLeftTexture  = new Texture("player_facing_left.jpg");
+        idleTexture         = new Texture("player_idle.png");
+        walkingRightTexture = new Texture("player_facing_right.png");
+        walkingLeftTexture  = new Texture("player_facing_left.png");
 
         bounds = new Rectangle();
         bounds.setPosition(position);
