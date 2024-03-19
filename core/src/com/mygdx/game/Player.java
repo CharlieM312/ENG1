@@ -11,6 +11,7 @@ public class Player {
     public enum playerState {
         IDLE,
         LOCKED,
+        INTERACTING_WITH_LOCATION,
         MOVING,
         DOING_RECREATIONAL_ACTIVITY,
         STUDYING,
@@ -116,15 +117,19 @@ public class Player {
             MoveDown();
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) {
+            SetDirection(Direction.UP);
             MoveUp();
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
+            SetDirection(Direction.LEFT);
             MoveLeft();
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
+            SetDirection(Direction.RIGHT);
             MoveRight();
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
+            SetDirection(Direction.DOWN);
             MoveDown();
         }
         else {
@@ -132,6 +137,23 @@ public class Player {
         }
     }
     
+    public void exitLocation() {
+        switch (currentDirection) {
+            case UP:
+                this.SetYPosition(this.GetYPosition() - 1);
+                break;
+            case RIGHT:
+                this.SetXPosition(this.GetXPosition() - 1);
+                break;
+            case DOWN:
+                this.SetYPosition(this.GetYPosition() + 1);
+                break;
+            case LEFT:
+                this.SetXPosition(this.GetXPosition() + 1);
+            default:
+                break;
+        }
+    }
 
     public void setPosition(Vector2 position) {
         bounds.setPosition(position);

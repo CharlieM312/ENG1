@@ -5,7 +5,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.graphics.Texture;
 
 public class GameLocation {
-    public enum State {
+    public enum locationState {
         IDLE,
         INTERACTING_WITH_PLAYER
     }
@@ -15,18 +15,23 @@ public class GameLocation {
     protected Vector2 position;
     // Bounding box to detect player collision
     protected Rectangle bounds;
-    protected State currentState;
+    protected locationState currentState;
 
     public GameLocation() {
+        currentState = locationState.IDLE;
         bounds = new Rectangle();
-        currentState = State.IDLE;
+        currentState = locationState.IDLE;
     }
 
     public Rectangle GetBounds() {
         return bounds;
     }
 
-    public State GetCurrentState() {
+    public void SetCurrentState(locationState state) {
+        currentState = state;
+    }
+
+    public locationState GetCurrentState() {
         return currentState;
     }
 

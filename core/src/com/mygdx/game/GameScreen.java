@@ -1,12 +1,17 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.mygdx.game.House.HouseState;
+import com.mygdx.game.GameLocation.locationState;
+import com.mygdx.game.GameLocation.locationState;
 import com.mygdx.game.Player.playerState;
 
 public class GameScreen implements Screen {
@@ -52,7 +57,7 @@ public class GameScreen implements Screen {
 		lake       = new Lake();
 		glasshouse = new Restaurant();
 		background = new Texture("background.jpg");
-		
+
 		dayCounter = 0;
 		foodCounter = 0;
 		activityCounter = 0;
@@ -84,36 +89,89 @@ public class GameScreen implements Screen {
 		game.font.draw(game.batch, "Activities completed: " + activityCounter, 800, 580);
 		game.font.draw(game.batch, "Times Eaten: " + foodCounter, 800, 560);
 		game.font.draw(game.batch, "Day: " + currentDay, 10, 580);
-        game.batch.end();
-		
-		if (house.GetState() == HouseState.INTERACTING) {
-			
-		}
 
 		if (player.GetCurrentPlayerState() != playerState.LOCKED)
-			player.CheckForInput();
-		
+		player.CheckForInput();
+
+		if (piazza.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
+			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				piazza.SetCurrentState(locationState.IDLE);
+			}
+			else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				piazza.SetCurrentState(locationState.IDLE);
+			}
+		}
+
+		if (glasshouse.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
+			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				glasshouse.SetCurrentState(locationState.IDLE);
+			}
+			else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				glasshouse.SetCurrentState(locationState.IDLE);
+			}
+		}
+
+		if (lake.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
+			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				lake.SetCurrentState(locationState.IDLE);
+			}
+			else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				lake.SetCurrentState(locationState.IDLE);
+			}
+		}
+
+		if (house.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
+			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				house.SetCurrentState(locationState.IDLE);
+			}
+			else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				house.SetCurrentState(locationState.IDLE);
+			}
+		}
+        game.batch.end();
+
 		// Checks if player collides study location
 		if (player.bounds.overlaps(piazza.bounds)) {
 			player.SetState(playerState.LOCKED);
-			
+			piazza.SetCurrentState(locationState.INTERACTING_WITH_PLAYER);
 		}
 
 		// Checks if player collides with food location
 		if (player.bounds.overlaps(glasshouse.bounds)) {
 			player.SetState(playerState.LOCKED);
+			glasshouse.SetCurrentState(locationState.INTERACTING_WITH_PLAYER);
 		}
 		
 		// Checks if player collides with lake location
 		if (player.bounds.overlaps(lake.bounds)) {
 			player.SetState(playerState.LOCKED);
+			lake.SetCurrentState(locationState.INTERACTING_WITH_PLAYER);
+
 		}
 
 		// Checks if player collides with house location
 		if (player.bounds.overlaps(house.bounds)) {
 			player.SetState(playerState.LOCKED);
-			house.SetState(HouseState.INTERACTING);
+			house.SetCurrentState(locationState.INTERACTING_WITH_PLAYER);
 		}
+		
+
 
 		// Checks if player is within bounds of the map after moving
 		if (player.GetXPosition() < 0)
