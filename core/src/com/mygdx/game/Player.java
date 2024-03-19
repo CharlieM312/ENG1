@@ -65,11 +65,18 @@ public class Player {
     // Takes energy modifier from location and either increases or decreases player energy
     public void ModifyEnergyLevel(int energyModifier) {
         energy += energyModifier;
-        checkEnergyLevel();
+        CheckEnergyLevelIsWithinBounds();
+    }
+
+    public boolean HasEnergy() {
+        if (energy > 0)
+            return true;
+        else
+            return false;
     }
 
     // Check that energy is within bounds (0-100)
-    private void checkEnergyLevel() {
+    private void CheckEnergyLevelIsWithinBounds() {
         if (energy > 100) {
             energy = 100;
         }
