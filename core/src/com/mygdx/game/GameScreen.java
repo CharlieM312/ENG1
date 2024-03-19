@@ -58,7 +58,7 @@ public class GameScreen implements Screen {
 		foodCounter = 0;
 		activityCounter = 0;
 		dayCounter = 0;
-		currentDay = days[dayCounter];
+		UpdateCurrentDay();
     }
 
     @Override
@@ -145,6 +145,7 @@ public class GameScreen implements Screen {
 		if (house.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.ModifyEnergyLevel(house.GetEnergyModifier());
+				ProgressToNextDay();
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
 				house.SetCurrentState(locationState.IDLE);
@@ -213,10 +214,6 @@ public class GameScreen implements Screen {
     @Override
     public void resize(int x, int y) {}
 
-    public void IncrementDayCount() {
-		dayCounter++;
-	}
-
 	public void IncrementFoodCount() {
 		foodCounter++;
 	}
@@ -229,8 +226,18 @@ public class GameScreen implements Screen {
 		return days[dayCounter];
 	}
 
-	public void UpdateCurrentDay(){
+	public void ProgressToNextDay() {
 		IncrementDayCount();
+		UpdateCurrentDay();
+		System.out.println(dayCounter);
+		System.out.println(currentDay);
+	}
+
+	public void UpdateCurrentDay() {
 		currentDay = days[dayCounter];
+	}
+
+	public void IncrementDayCount() {
+		dayCounter++;
 	}
 }
