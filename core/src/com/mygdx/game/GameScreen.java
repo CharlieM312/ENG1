@@ -96,7 +96,7 @@ public class GameScreen implements Screen {
 		// and no [n] to exit back to main game screen. While a player has not selected either option they are in locked
 		// state so the directional keys won't move the player until they have made an option and their state is set back to idle
 
-		// Sets up menu for Piazza to interact with player
+		// Sets up menu to allow the player to interact with the Piazza building
 		if (piazza.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.SetState(playerState.IDLE);
@@ -110,7 +110,7 @@ public class GameScreen implements Screen {
 			}
 		}
 
-		// Sets up menu for glasshouse to interact with player
+		// Sets up menu to allow the player to interact with the glasshouse
 		if (glasshouse.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.SetState(playerState.IDLE);
@@ -124,7 +124,7 @@ public class GameScreen implements Screen {
 			}
 		}
 
-		// Sets up menu for lake to interact with the player
+		// Sets up menu to allow the player to interact with the lake
 		if (lake.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.SetState(playerState.IDLE);
@@ -138,7 +138,7 @@ public class GameScreen implements Screen {
 			}
 		}
 
-		// Sets up menu for house to interact with player
+		// Sets up menu to allow the player to interact with the house
 		if (house.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.SetState(playerState.IDLE);
