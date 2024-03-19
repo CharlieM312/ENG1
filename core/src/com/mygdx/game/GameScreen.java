@@ -90,9 +90,10 @@ public class GameScreen implements Screen {
 		game.font.draw(game.batch, "Times Eaten: " + foodCounter, 800, 560);
 		game.font.draw(game.batch, "Day: " + currentDay, 10, 580);
 
-		if (player.GetCurrentPlayerState() != playerState.LOCKED)
-		player.CheckForInput();
-
+		// Players interaction with piazza building
+		if (player.GetCurrentPlayerState() != playerState.LOCKED){
+			player.CheckForInput();
+		}
 		if (piazza.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.SetState(playerState.IDLE);
@@ -105,7 +106,7 @@ public class GameScreen implements Screen {
 				piazza.SetCurrentState(locationState.IDLE);
 			}
 		}
-
+		// Players interaction with glasshouse building
 		if (glasshouse.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.SetState(playerState.IDLE);
@@ -118,7 +119,7 @@ public class GameScreen implements Screen {
 				glasshouse.SetCurrentState(locationState.IDLE);
 			}
 		}
-
+		// Players interaction with lake
 		if (lake.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.SetState(playerState.IDLE);
@@ -131,7 +132,7 @@ public class GameScreen implements Screen {
 				lake.SetCurrentState(locationState.IDLE);
 			}
 		}
-
+		// Players interaction with house
 		if (house.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.SetState(playerState.IDLE);

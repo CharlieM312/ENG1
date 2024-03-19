@@ -140,16 +140,16 @@ public class Player {
     public void exitLocation() {
         switch (currentDirection) {
             case UP:
-                this.SetYPosition(this.GetYPosition() - 1);
+                this.SetYPosition(this.GetYPosition() - 10);
                 break;
             case RIGHT:
-                this.SetXPosition(this.GetXPosition() - 1);
+                this.SetXPosition(this.GetXPosition() - 10);
                 break;
             case DOWN:
-                this.SetYPosition(this.GetYPosition() + 1);
+                this.SetYPosition(this.GetYPosition() + 10);
                 break;
             case LEFT:
-                this.SetXPosition(this.GetXPosition() + 1);
+                this.SetXPosition(this.GetXPosition() + 10);
             default:
                 break;
         }
