@@ -13,11 +13,13 @@ public class GameOverScreen implements Screen {
     final HeslingtonHustle game;
     OrthographicCamera camera;
     Texture background;
+    private float finalscore;
     public GameOverScreen(final HeslingtonHustle game) {
         this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1000, 600);
         background = new Texture("background.jpg");
+        finalscore = 0;
 
     }
     @Override
@@ -25,12 +27,12 @@ public class GameOverScreen implements Screen {
         ScreenUtils.clear(Color.BLACK);
         camera.update();
         game.batch.setProjectionMatrix(camera.combined);
-
         game.batch.begin();
         game.batch.draw(background, 0, 0);
         game.font.getData().setScale(3, 3);
         game.font.setColor(Color.WHITE);
         game.font.draw(game.batch, "Heslington Hustle", 340, 300);
+        game.font.draw(game.batch, "Your final score was: " + finalscore, 340,250);
         game.batch.end();
     }
 
