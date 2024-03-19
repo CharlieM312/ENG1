@@ -64,6 +64,10 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+		// Starts next day if player energy is at 0
+		if (!(player.HasEnergy())) 
+			ProgressToNextDay();
+		
         ScreenUtils.clear(0, 0, 0, 0);
 		camera.update();
 		game.batch.setProjectionMatrix(camera.combined);
@@ -198,7 +202,42 @@ public class GameScreen implements Screen {
 			player.SetYPosition(600 - 64);
     }
 
-    @Override
+	public void IncrementFoodCount() {
+		foodCounter++;
+	}
+
+	public void IncrementActivityCount() {
+		activityCounter++;
+	}
+
+	public String getCurrentDayName() {
+		return days[dayCounter];
+	}
+
+	public void ProgressToNextDay() {
+		// If it is sunday then progress to end the game
+		if (currentDay == "Sunday") {
+			// Set screen to end game screen
+		}
+
+		IncrementDayCount();
+		UpdateCurrentDay();
+		
+		// Resets player energy level to 100
+		player.ModifyEnergyLevel(100);
+		// Resets player position to default for new day
+		player.setPosition(new Vector2(168, 20));
+	}
+
+	public void UpdateCurrentDay() {
+		currentDay = days[dayCounter];
+	}
+
+	public void IncrementDayCount() {
+		dayCounter++;
+	}
+
+	@Override
     public void pause() {}
 
     @Override
@@ -213,33 +252,6 @@ public class GameScreen implements Screen {
     @Override
     public void resume() {}
 
-    @Override
-    public void resize(int x, int y) {}
-
-	public void IncrementFoodCount() {
-		foodCounter++;
-	}
-
-	public void IncrementActivityCount() {
-		activityCounter++;
-	}
-
-	public String getCurrentDayName() {
-		return days[dayCounter];
-	}
-
-	public void ProgressToNextDay() {
-		IncrementDayCount();
-		UpdateCurrentDay();
-		System.out.println(dayCounter);
-		System.out.println(currentDay);
-	}
-
-	public void UpdateCurrentDay() {
-		currentDay = days[dayCounter];
-	}
-
-	public void IncrementDayCount() {
-		dayCounter++;
-	}
+	@Override
+	public void resize(int x, int y) {}
 }
