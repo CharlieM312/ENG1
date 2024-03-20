@@ -8,6 +8,7 @@ public class Restaurant extends GameLocation {
         energyModifier = -10;
         hoursModifier = 1;
         locationTexture = new Texture("restaurant.jpg");
+        interactionMenu = new Texture("restaurant_interact_menu.jpg");
         position = new Vector2(180, 470);
         bounds.setPosition(position);
         bounds.width = 180;

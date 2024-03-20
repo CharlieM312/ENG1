@@ -8,6 +8,7 @@ public class StudyBuilding extends GameLocation {
         energyModifier = -30;
         hoursModifier = 3;
         locationTexture = new Texture("study_building.jpg");
+        interactionMenu = new Texture("study_building_interact_menu.jpg");
         position = new Vector2(400, 280);
         bounds.setPosition(position);
         bounds.width = 64;

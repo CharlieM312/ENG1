@@ -7,6 +7,7 @@ public class Charles extends GameLocation{
         energyModifier = -20;
         hoursModifier = 2;
         locationTexture = new Texture("thecharles.jpg");
+        interactionMenu = new Texture("charles_interaction_menu.jpg");
         position = new Vector2(400, 460);
         bounds.setPosition(position);
         bounds.width = 180;
