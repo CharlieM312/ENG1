@@ -7,9 +7,9 @@ public class Restaurant extends GameLocation {
     public Restaurant() {
         energyModifier = -10;
         locationTexture = new Texture("restaurant.jpg");
-        position = new Vector2(250, 470);
+        position = new Vector2(180, 470);
         bounds.setPosition(position);
-        bounds.width = 64;
-        bounds.height = 64;
+        bounds.width = 180;
+        bounds.height = 120;
     }
 }
