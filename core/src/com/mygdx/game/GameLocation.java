@@ -12,7 +12,7 @@ public class GameLocation {
     
     // The amount of energy that interacting with the location decreases/increases for the player
     protected int energyModifier;
-
+    protected int hoursModifier;
     protected Texture locationTexture;
 
     protected Vector2 position;
@@ -28,6 +28,9 @@ public class GameLocation {
 
     public int GetEnergyModifier() {
         return energyModifier;
+    }
+    public int GethoursModifier() {
+        return hoursModifier;
     }
 
     public Rectangle GetBounds() {
