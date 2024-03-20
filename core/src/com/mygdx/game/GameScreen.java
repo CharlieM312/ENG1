@@ -26,7 +26,7 @@ public class GameScreen implements Screen {
 	String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 	String currentDay;
 	
-	
+	int hoursremain;
 	int activityCounter;
 	int foodCounter;
 	int dayCounter;
@@ -75,7 +75,7 @@ public class GameScreen implements Screen {
 		// Draws buildings now using location class
 		game.batch.draw(piazza.locationTexture, 400, 280);
 		game.batch.draw(house.locationTexture, 100, 280);
-		game.batch.draw(lake.locationTexture, 700, 470);
+		game.batch.draw(lake.locationTexture, 410, 80);
 		game.batch.draw(glasshouse.locationTexture, 180, 470);
 		game.batch.draw(gym.locationTexture, 600, 230);
 		game.batch.draw(charles.locationTexture, 400, 460);
@@ -85,6 +85,7 @@ public class GameScreen implements Screen {
 		game.font.draw(game.batch, "Activities completed: " + activityCounter, 800, 580);
 		game.font.draw(game.batch, "Times Eaten: " + foodCounter, 800, 560);
 		game.font.draw(game.batch, "Day: " + currentDay, 10, 580);
+		game.font.draw(game.batch, "Time remaining: " + hoursremain, 10, 560);
 		game.font.draw(game.batch, "Energy: " + player.GetEnergy(), 800, 540);
 
 		// If player is not interacting with a building and their state is not set to locked,
@@ -103,6 +104,7 @@ public class GameScreen implements Screen {
 				player.ModifyEnergyLevel(piazza.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
+				Modifytime(piazza.GethoursModifier());
 				piazza.SetCurrentState(locationState.IDLE);
 				IncrementStudyCount();
 				
@@ -120,6 +122,7 @@ public class GameScreen implements Screen {
 				player.ModifyEnergyLevel(glasshouse.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
+				Modifytime(glasshouse.GethoursModifier());
 				glasshouse.SetCurrentState(locationState.IDLE);
 				IncrementFoodCount();
 			}
@@ -134,6 +137,7 @@ public class GameScreen implements Screen {
 		if (lake.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.ModifyEnergyLevel(lake.GetEnergyModifier());
+				Modifytime(lake.GethoursModifier());
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
 				lake.SetCurrentState(locationState.IDLE);
@@ -172,6 +176,7 @@ public class GameScreen implements Screen {
 				player.ModifyEnergyLevel(gym.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
+				Modifytime(gym.GethoursModifier());
 				gym.SetCurrentState(locationState.IDLE);
 				IncrementActivityCount();
 			}
@@ -188,6 +193,7 @@ public class GameScreen implements Screen {
 				player.ModifyEnergyLevel(charles.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
+				Modifytime(charles.GethoursModifier());
 				charles.SetCurrentState(locationState.IDLE);
 				IncrementActivityCount();
 			}
@@ -286,8 +292,12 @@ public class GameScreen implements Screen {
 
 	public void UpdateCurrentDay() {
 		currentDay = days[dayCounter];
+		hoursremain = 16;
 	}
-
+	public void Modifytime(int hours)
+	{
+		hoursremain -=hours;
+	}
 	public void IncrementDayCount() {
 		dayCounter++;
 	}
