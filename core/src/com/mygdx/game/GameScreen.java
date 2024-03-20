@@ -19,6 +19,7 @@ public class GameScreen implements Screen {
 	Lake lake;
 	Restaurant glasshouse;
 	SportsVillage gym;
+	Charles charles;
 	Texture background;
 
 	String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
@@ -43,6 +44,7 @@ public class GameScreen implements Screen {
 		lake       = new Lake();
 		glasshouse = new Restaurant();
 		gym = new SportsVillage();
+		charles = new Charles();
 		background = new Texture("background.jpg");
 
 		dayCounter = 0;
@@ -76,6 +78,7 @@ public class GameScreen implements Screen {
 		game.batch.draw(lake.locationTexture, 700, 470);
 		game.batch.draw(glasshouse.locationTexture, 250, 470);
 		game.batch.draw(gym.locationTexture, 600, 230);
+		game.batch.draw(charles.locationTexture, 400, 460);
 
 		// Draws text
         game.font.getData().setScale(1, 1);
@@ -178,6 +181,22 @@ public class GameScreen implements Screen {
 				gym.SetCurrentState(locationState.IDLE);
 			}
 		}
+
+		// Sets up menu to allow the player to interact with the charles
+		if (charles.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
+			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
+				player.ModifyEnergyLevel(charles.GetEnergyModifier());
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				charles.SetCurrentState(locationState.IDLE);
+				IncrementActivityCount();
+			}
+			else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				charles.SetCurrentState(locationState.IDLE);
+			}
+		}
         game.batch.end();
 
 		// Checks if player collides study location and locks player if they have
@@ -209,6 +228,12 @@ public class GameScreen implements Screen {
 		if (player.bounds.overlaps(gym.bounds)) {
 			player.SetState(playerState.LOCKED);
 			gym.SetCurrentState(locationState.INTERACTING_WITH_PLAYER);
+		}
+
+		// Checks if player collides with charles location and locks player if they have
+		if (player.bounds.overlaps(charles.bounds)) {
+			player.SetState(playerState.LOCKED);
+			charles.SetCurrentState(locationState.INTERACTING_WITH_PLAYER);
 		}
 		
 
