@@ -76,7 +76,7 @@ public class GameScreen implements Screen {
 		game.batch.draw(piazza.locationTexture, 400, 280);
 		game.batch.draw(house.locationTexture, 100, 280);
 		game.batch.draw(lake.locationTexture, 700, 470);
-		game.batch.draw(glasshouse.locationTexture, 250, 470);
+		game.batch.draw(glasshouse.locationTexture, 180, 470);
 		game.batch.draw(gym.locationTexture, 600, 230);
 		game.batch.draw(charles.locationTexture, 400, 460);
 
