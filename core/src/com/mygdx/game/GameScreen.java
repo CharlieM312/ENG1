@@ -18,6 +18,7 @@ public class GameScreen implements Screen {
 	StudyBuilding piazza;
 	Lake lake;
 	Restaurant glasshouse;
+	SportsVillage gym;
 	Texture background;
 
 	String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
@@ -41,6 +42,7 @@ public class GameScreen implements Screen {
         piazza     = new StudyBuilding();
 		lake       = new Lake();
 		glasshouse = new Restaurant();
+		gym = new SportsVillage();
 		background = new Texture("background.jpg");
 
 		dayCounter = 0;
@@ -73,6 +75,7 @@ public class GameScreen implements Screen {
 		game.batch.draw(house.locationTexture, 100, 280);
 		game.batch.draw(lake.locationTexture, 700, 470);
 		game.batch.draw(glasshouse.locationTexture, 250, 470);
+		game.batch.draw(gym.locationTexture, 550, 240);
 
 		// Draws text
         game.font.getData().setScale(1, 1);
@@ -159,6 +162,22 @@ public class GameScreen implements Screen {
 
 			}
 		}
+
+		// Sets up menu to allow the player to interact with the gym
+		if (gym.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
+			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
+				player.ModifyEnergyLevel(gym.GetEnergyModifier());
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				gym.SetCurrentState(locationState.IDLE);
+				IncrementActivityCount();
+			}
+			else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
+				player.SetState(playerState.IDLE);
+				player.exitLocation();
+				gym.SetCurrentState(locationState.IDLE);
+			}
+		}
         game.batch.end();
 
 		// Checks if player collides study location and locks player if they have
@@ -184,6 +203,12 @@ public class GameScreen implements Screen {
 		if (player.bounds.overlaps(house.bounds)) {
 			player.SetState(playerState.LOCKED);
 			house.SetCurrentState(locationState.INTERACTING_WITH_PLAYER);
+		}
+
+		// Checks if player collides with gym location and locks player if they have
+		if (player.bounds.overlaps(gym.bounds)) {
+			player.SetState(playerState.LOCKED);
+			gym.SetCurrentState(locationState.INTERACTING_WITH_PLAYER);
 		}
 		
 
