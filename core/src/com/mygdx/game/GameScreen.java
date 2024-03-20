@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.GameLocation.locationState;
 import com.mygdx.game.Player.playerState;
+
 // Defines the GameScreen class
 public class GameScreen implements Screen {
     final HeslingtonHustle game;
@@ -47,11 +48,10 @@ public class GameScreen implements Screen {
 		charles = new Charles();
 		background = new Texture("background.jpg");
 
-		dayCounter = 0;
-		foodCounter = 0;
+		dayCounter 		= 0;
+		foodCounter 	= 0;
 		activityCounter = 0;
 		dayCounter = 0;
-		studyCounter = 0;
 		UpdateCurrentDay();
     }
 
