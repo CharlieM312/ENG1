@@ -7,7 +7,7 @@ public class SportsVillage extends GameLocation {
     public SportsVillage() {
         energyModifier = -30;
         locationTexture = new Texture("sports_village.jpg");
-        position = new Vector2(550, 280);
+        position = new Vector2(600, 230);
         bounds.setPosition(position);
         bounds.width = 180;
         bounds.height = 101;
