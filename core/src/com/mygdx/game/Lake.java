@@ -7,10 +7,10 @@ public class Lake extends GameLocation {
     public Lake() {
         energyModifier = -20;
         hoursModifier = 1;
-        locationTexture = new Texture("lake.jpg");
+        locationTexture = new Texture("lake.png");
         position = new Vector2(410, 80);
         bounds.setPosition(position);
-        bounds.width = 180;
-        bounds.height = 90;
+        bounds.width = 123;
+        bounds.height = 110;
     }
 }

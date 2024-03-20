@@ -7,10 +7,10 @@ public class StudyBuilding extends GameLocation {
     public StudyBuilding() {
         energyModifier = -30;
         hoursModifier = 3;
-        locationTexture = new Texture("study_building.jpg");
+        locationTexture = new Texture("study_building.png");
         position = new Vector2(400, 280);
         bounds.setPosition(position);
-        bounds.width = 64;
-        bounds.height = 64;
+        bounds.width = 148;
+        bounds.height = 100;
     }
 }

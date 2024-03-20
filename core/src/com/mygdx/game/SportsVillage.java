@@ -7,11 +7,11 @@ public class SportsVillage extends GameLocation {
     public SportsVillage() {
         energyModifier = -30;
         hoursModifier = 3;
-        locationTexture = new Texture("sports_village.jpg");
+        locationTexture = new Texture("sports_village.png");
         position = new Vector2(600, 230);
         bounds.setPosition(position);
-        bounds.width = 180;
-        bounds.height = 101;
+        bounds.width = 125;
+        bounds.height = 100;
     }
     
 }

@@ -6,11 +6,11 @@ public class Charles extends GameLocation{
     public Charles() {
         energyModifier = -20;
         hoursModifier = 2;
-        locationTexture = new Texture("thecharles.jpg");
+        locationTexture = new Texture("thecharles.png");
         position = new Vector2(400, 460);
         bounds.setPosition(position);
-        bounds.width = 180;
-        bounds.height = 135;
+        bounds.width = 135;
+        bounds.height = 80;
     }
     
 }

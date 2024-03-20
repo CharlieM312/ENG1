@@ -6,10 +6,10 @@ import com.badlogic.gdx.math.Vector2;
 public class House extends GameLocation {
     public House() {
         energyModifier = 100;
-        locationTexture = new Texture("house.jpg");
+        locationTexture = new Texture("house.png");
         position = new Vector2(100, 200);
         bounds.setPosition(position);
-        bounds.width = 180;
-        bounds.height = 120;
+        bounds.width = 93;
+        bounds.height = 100;
     }
 }
