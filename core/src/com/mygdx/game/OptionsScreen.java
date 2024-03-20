@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
+// import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 // Defines the options screen
@@ -12,13 +12,13 @@ public class OptionsScreen implements Screen{
     
     final HeslingtonHustle game;
     OrthographicCamera camera;
-    Texture optionScreen;
+    //Texture optionScreen;
 
     public OptionsScreen(final HeslingtonHustle game) {
         this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1000, 600);
-        optionScreen = new Texture("options.jpg");
+        //optionScreen = new Texture("options.jpg");
     }
     // Renders the options screen
     @Override
@@ -27,7 +27,7 @@ public class OptionsScreen implements Screen{
         camera.update();
         game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
-        game.batch.draw(optionScreen, 150, 200);
+        //game.batch.draw(optionScreen, 150, 200);
         game.batch.end();
         // Allows the user to return to the main menu or start the game
         if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
@@ -62,7 +62,7 @@ public class OptionsScreen implements Screen{
 
     @Override
     public void dispose() {
-        optionScreen.dispose();
+        // optionScreen.dispose();
     }
     
 }
