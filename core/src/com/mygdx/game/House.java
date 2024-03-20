@@ -7,9 +7,9 @@ public class House extends GameLocation {
     public House() {
         energyModifier = 100;
         locationTexture = new Texture("house.jpg");
-        position = new Vector2(100, 280);
+        position = new Vector2(100, 200);
         bounds.setPosition(position);
-        bounds.width = 64;
-        bounds.height = 64;
+        bounds.width = 180;
+        bounds.height = 120;
     }
 }
