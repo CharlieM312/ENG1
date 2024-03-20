@@ -27,7 +27,7 @@ public class GameScreen implements Screen {
 	int activityCounter;
 	int foodCounter;
 	int dayCounter;
-
+	int studyCounter;
     OrthographicCamera camera;
 
     public GameScreen(final HeslingtonHustle game) {
@@ -47,6 +47,7 @@ public class GameScreen implements Screen {
 		foodCounter = 0;
 		activityCounter = 0;
 		dayCounter = 0;
+		studyCounter = 0;
 		UpdateCurrentDay();
     }
 
@@ -97,7 +98,7 @@ public class GameScreen implements Screen {
 				player.SetState(playerState.IDLE);
 				player.exitLocation();
 				piazza.SetCurrentState(locationState.IDLE);
-				IncrementActivityCount();
+				IncrementStudyCount();
 				
 			}
 			else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
@@ -239,6 +240,9 @@ public class GameScreen implements Screen {
 
 	public void IncrementDayCount() {
 		dayCounter++;
+	}
+	public void IncrementStudyCount(){
+		studyCounter++;
 	}
 
 	@Override
