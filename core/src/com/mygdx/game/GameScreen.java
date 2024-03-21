@@ -37,7 +37,7 @@ public class GameScreen implements Screen {
         this.game = game;
 
         camera = new OrthographicCamera();
-		camera.setToOrtho(false, game.screenWidth, game.screenHeight);
+		camera.setToOrtho(false, 1000, 600);
 
         player     = new Player(new Vector2(168, 20));
         house      = new House();
@@ -73,20 +73,19 @@ public class GameScreen implements Screen {
 				, player.GetXPosition(), player.GetYPosition());
 
 		// Draws buildings now using location class
-		game.batch.draw(piazza.locationTexture, 400, 280);
+		game.batch.draw(piazza.locationTexture, 400, 240);
 		game.batch.draw(house.locationTexture, 100, 200);
 		game.batch.draw(lake.locationTexture, 410, 80);
 		game.batch.draw(glasshouse.locationTexture, 180, 470);
-		game.batch.draw(gym.locationTexture, 600, 230);
-		game.batch.draw(charles.locationTexture, 400, 460);
+		game.batch.draw(gym.locationTexture, 680, 230);
+		game.batch.draw(charles.locationTexture, 480, 460);
 
 		// Draws text
         game.font.getData().setScale(1, 1);
 		game.font.draw(game.batch, "Activities completed: " + activityCounter, 800, 580);
-		game.font.draw(game.batch, "Times Eaten: " + foodCounter, 800, 560);
 		game.font.draw(game.batch, "Day: " + currentDay, 10, 580);
 		game.font.draw(game.batch, "Time remaining: " + hoursremain, 10, 560);
-		game.font.draw(game.batch, "Energy: " + player.GetEnergy(), 800, 540);
+		game.font.draw(game.batch, "Energy: " + player.GetEnergy(), 800, 560);
 
 		// If player is not interacting with a building and their state is not set to locked,
 		// check for directional input keys
@@ -100,10 +99,6 @@ public class GameScreen implements Screen {
 
 		// Sets up menu to allow the player to interact with the Piazza building
 		if (piazza.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
-			Texture interactionMenu = piazza.getInteractionMenu();
-			game.batch.draw(interactionMenu, (game.screenWidth / 2) - (interactionMenu.getWidth() / 2)
-			, (game.screenHeight / 2) - (interactionMenu.getHeight() / 2));
-
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.ModifyEnergyLevel(piazza.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
@@ -122,10 +117,6 @@ public class GameScreen implements Screen {
 
 		// Sets up menu to allow the player to interact with the glasshouse
 		if (glasshouse.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
-			Texture interactionMenu = glasshouse.getInteractionMenu();
-			game.batch.draw(interactionMenu, (game.screenWidth / 2) - (interactionMenu.getWidth() / 2)
-			, (game.screenHeight / 2) - (interactionMenu.getHeight() / 2));
-
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.ModifyEnergyLevel(glasshouse.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
@@ -143,10 +134,6 @@ public class GameScreen implements Screen {
 
 		// Sets up menu to allow the player to interact with the lake
 		if (lake.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
-			Texture interactionMenu = lake.getInteractionMenu();
-			game.batch.draw(interactionMenu, (game.screenWidth / 2) - (interactionMenu.getWidth() / 2)
-			, (game.screenHeight / 2) - (interactionMenu.getHeight() / 2));
-
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.ModifyEnergyLevel(lake.GetEnergyModifier());
 				Modifytime(lake.GethoursModifier());
@@ -154,6 +141,8 @@ public class GameScreen implements Screen {
 				player.exitLocation();
 				lake.SetCurrentState(locationState.IDLE);
 				IncrementActivityCount();
+				
+				
 			}
 			else if (Gdx.input.isKeyPressed(Input.Keys.N)) {
 				player.SetState(playerState.IDLE);
@@ -164,9 +153,6 @@ public class GameScreen implements Screen {
 
 		// Sets up menu to allow the player to interact with the house
 		if (house.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
-			Texture interactionMenu = house.getInteractionMenu();
-			game.batch.draw(interactionMenu, (game.screenWidth / 2) - (interactionMenu.getWidth() / 2)
-			, (game.screenHeight / 2) - (interactionMenu.getHeight() / 2));
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.ModifyEnergyLevel(house.GetEnergyModifier());
 				ProgressToNextDay();
@@ -185,10 +171,6 @@ public class GameScreen implements Screen {
 
 		// Sets up menu to allow the player to interact with the gym
 		if (gym.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
-			Texture interactionMenu = gym.getInteractionMenu();
-			game.batch.draw(interactionMenu, (game.screenWidth / 2) - (interactionMenu.getWidth() / 2)
-			, (game.screenHeight / 2) - (interactionMenu.getHeight() / 2));
-
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.ModifyEnergyLevel(gym.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
@@ -206,10 +188,6 @@ public class GameScreen implements Screen {
 
 		// Sets up menu to allow the player to interact with the charles
 		if (charles.GetCurrentState() == locationState.INTERACTING_WITH_PLAYER) {
-			Texture interactionMenu = charles.getInteractionMenu();
-			game.batch.draw(interactionMenu, (game.screenWidth / 2) - (interactionMenu.getWidth() / 2)
-			, (game.screenHeight / 2) - (interactionMenu.getHeight() / 2));
-
 			if (Gdx.input.isKeyPressed(Input.Keys.Y)) {
 				player.ModifyEnergyLevel(charles.GetEnergyModifier());
 				player.SetState(playerState.IDLE);
@@ -268,12 +246,12 @@ public class GameScreen implements Screen {
 		// Checks if player is within bounds of the map after moving
 		if (player.GetXPosition() < 0)
 			player.SetXPosition(0);
-		if (player.GetXPosition() > game.screenWidth - 64)
-			player.SetXPosition(game.screenWidth - 64);
+		if (player.GetXPosition() > 1000 - 64)
+			player.SetXPosition(1000 - 64);
 		if (player.GetYPosition() < 0)
 			player.SetYPosition(0);
-		if (player.GetYPosition() > game.screenHeight - 64)
-			player.SetYPosition(game.screenHeight - 64);
+		if (player.GetYPosition() > 600 - 64)
+			player.SetYPosition(600 - 64);
     }
 
 	public void IncrementFoodCount() {

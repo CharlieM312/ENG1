@@ -9,9 +9,9 @@ public class StudyBuilding extends GameLocation {
         hoursModifier = 3;
         locationTexture = new Texture("study_building.jpg");
         interactionMenu = new Texture("study_building_interact_menu.jpg");
-        position = new Vector2(400, 280);
+        position = new Vector2(400, 240);
         bounds.setPosition(position);
-        bounds.width = 64;
-        bounds.height = 64;
+        bounds.width = 180;
+        bounds.height = 120;
     }
 }

@@ -11,7 +11,7 @@ public class Restaurant extends GameLocation {
         interactionMenu = new Texture("restaurant_interact_menu.jpg");
         position = new Vector2(180, 470);
         bounds.setPosition(position);
-        bounds.width = 180;
-        bounds.height = 120;
+        bounds.width = 160;
+        bounds.height = 100;
     }
 }
