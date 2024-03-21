@@ -16,12 +16,12 @@ public class GameOverScreen implements Screen {
     OrthographicCamera camera;
     Texture background;
     private float finalscore;
-    public GameOverScreen(final HeslingtonHustle game) {
+    public GameOverScreen(final HeslingtonHustle game, int score) {
         this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1000, 600);
         background = new Texture("background.jpg");
-        finalscore = 0;
+        finalscore = score;
 
     }
     // Prints final score on the screen

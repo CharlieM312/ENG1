@@ -292,7 +292,7 @@ public class GameScreen implements Screen {
 		// If it is sunday then progress to end the game
 		if (currentDay == "Sunday") {
 			// Set screen to end game screen
-			game.setScreen(new GameOverScreen(game));
+			game.setScreen(new GameOverScreen(game, CalculateScore()));
 			dispose();
 
 		}
@@ -324,6 +324,12 @@ public class GameScreen implements Screen {
 	}
 	public void IncrementStudyCount(){
 		studyCounter++;
+	}
+	public int CalculateScore(){
+		if (8 <= studyCounter && studyCounter <= 11){
+			if(4 <= activityCounter && activityCounter<= 8){return 100;}
+			else{return 50;}
+		}return 0;
 	}
 
 	@Override
