@@ -11,7 +11,7 @@ public class Lake extends GameLocation {
         interactionMenu = new Texture("lake_interaction_menu.jpg");
         position = new Vector2(410, 80);
         bounds.setPosition(position);
-        bounds.width = 180;
+        bounds.width = 160;
         bounds.height = 90;
     }
 }
