@@ -13,6 +13,7 @@ public class MainMenuScreen implements Screen {
     final HeslingtonHustle game;
     OrthographicCamera camera;
     Texture background;
+    private Vector2 titlePosition;
     private Vector2 newGameButtonPosition;
     private Vector2 optionsButtonPosition;
     private Vector2 instructionsButtonPosition;
@@ -22,13 +23,14 @@ public class MainMenuScreen implements Screen {
         this.game = game;
 
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 1000, 600);
+        camera.setToOrtho(false, game.screenWidth, game.screenHeight);
         background = new Texture("background.jpg");
 
-        newGameButtonPosition = new Vector2(440, 230);
-        optionsButtonPosition = new Vector2(440, 190);
-        instructionsButtonPosition = new Vector2(440, 150);
-        exitButtonPosition = new Vector2(440, 110);
+        titlePosition = new Vector2((game.screenWidth / 2) - (150), (game.screenHeight / 2));
+        newGameButtonPosition = new Vector2(titlePosition.x + 80, titlePosition.y - 50);
+        optionsButtonPosition = new Vector2(titlePosition.x + 80, newGameButtonPosition.y - 40);
+        instructionsButtonPosition = new Vector2(titlePosition.x + 80, optionsButtonPosition.y - 40);
+        exitButtonPosition = new Vector2(titlePosition.x + 80, instructionsButtonPosition.y - 40);
     }
     // Renders the main menu screen
     @Override
@@ -41,7 +43,7 @@ public class MainMenuScreen implements Screen {
         game.batch.draw(background, 0, 0);
         game.font.getData().setScale(3, 3);
         game.font.setColor(Color.WHITE);
-        game.font.draw(game.batch, "Heslington Hustle", 340, 300);
+        game.font.draw(game.batch, "Heslington Hustle", titlePosition.x, titlePosition.y);
         // Checks for user input to start the game, view the instructions, or exit the game
         if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
             game.setScreen(new InstructionScreen(game));
