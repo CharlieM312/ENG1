@@ -73,20 +73,19 @@ public class GameScreen implements Screen {
 				, player.GetXPosition(), player.GetYPosition());
 
 		// Draws buildings now using location class
-		game.batch.draw(piazza.locationTexture, 400, 280);
+		game.batch.draw(piazza.locationTexture, 400, 240);
 		game.batch.draw(house.locationTexture, 100, 200);
 		game.batch.draw(lake.locationTexture, 410, 80);
 		game.batch.draw(glasshouse.locationTexture, 180, 470);
-		game.batch.draw(gym.locationTexture, 600, 230);
-		game.batch.draw(charles.locationTexture, 400, 460);
+		game.batch.draw(gym.locationTexture, 680, 230);
+		game.batch.draw(charles.locationTexture, 480, 460);
 
 		// Draws text
         game.font.getData().setScale(1, 1);
 		game.font.draw(game.batch, "Activities completed: " + activityCounter, 800, 580);
-		game.font.draw(game.batch, "Times Eaten: " + foodCounter, 800, 560);
 		game.font.draw(game.batch, "Day: " + currentDay, 10, 580);
 		game.font.draw(game.batch, "Time remaining: " + hoursremain, 10, 560);
-		game.font.draw(game.batch, "Energy: " + player.GetEnergy(), 800, 540);
+		game.font.draw(game.batch, "Energy: " + player.GetEnergy(), 800, 560);
 
 		// If player is not interacting with a building and their state is not set to locked,
 		// check for directional input keys
@@ -271,7 +270,7 @@ public class GameScreen implements Screen {
 		// If it is sunday then progress to end the game
 		if (currentDay == "Sunday") {
 			// Set screen to end game screen
-			game.setScreen(new GameOverScreen(game));
+			game.setScreen(new GameOverScreen(game, CalculateScore()));
 			dispose();
 
 		}
@@ -303,6 +302,12 @@ public class GameScreen implements Screen {
 	}
 	public void IncrementStudyCount(){
 		studyCounter++;
+	}
+	public int CalculateScore(){
+		if (8 <= studyCounter && studyCounter <= 11){
+			if(4 <= activityCounter && activityCounter<= 8){return 100;}
+			else{return 50;}
+		}return 0;
 	}
 
 	@Override

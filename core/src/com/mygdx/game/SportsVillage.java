@@ -8,6 +8,7 @@ public class SportsVillage extends GameLocation {
         energyModifier = -30;
         hoursModifier = 3;
         locationTexture = new Texture("sports_village.png");
+        interactionMenu = new Texture("gym_interaction_menu.jpg");
         position = new Vector2(600, 230);
         bounds.setPosition(position);
         bounds.width = 125;

@@ -8,6 +8,7 @@ public class Lake extends GameLocation {
         energyModifier = -20;
         hoursModifier = 1;
         locationTexture = new Texture("lake.png");
+        interactionMenu = new Texture("lake_interaction_menu.jpg");
         position = new Vector2(410, 80);
         bounds.setPosition(position);
         bounds.width = 123;

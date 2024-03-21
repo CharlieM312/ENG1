@@ -1,3 +1,8 @@
+/*
+ * Base class for locations used in the game.
+ * each new location should inherit from this class.
+ */
+
 package com.mygdx.game;
 
 import com.badlogic.gdx.math.Vector2;
@@ -14,6 +19,7 @@ public class GameLocation {
     protected int energyModifier;
     protected int hoursModifier;
     protected Texture locationTexture;
+    protected Texture interactionMenu;
 
     protected Vector2 position;
     // Bounding box to detect player collision
@@ -24,6 +30,10 @@ public class GameLocation {
         currentState = locationState.IDLE;
         bounds = new Rectangle();
         currentState = locationState.IDLE;
+    }
+
+    public Texture getInteractionMenu() {
+        return interactionMenu;
     }
 
     public int GetEnergyModifier() {

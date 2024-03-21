@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
 public class HeslingtonHustle extends Game {
+	final float screenWidth = 1000;
+	final float screenHeight = 600;
     SpriteBatch batch;
 	BitmapFont font;
 	// Starts the game and creates a new main menu screen
