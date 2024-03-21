@@ -10,7 +10,7 @@ public class House extends GameLocation {
         interactionMenu = new Texture("house_interact_menu.png");
         position = new Vector2(100, 200);
         bounds.setPosition(position);
-        bounds.width = 180;
+        bounds.width = 160;
         bounds.height = 120;
     }
 }

@@ -78,7 +78,7 @@ public class GameScreen implements Screen {
 		game.batch.draw(lake.locationTexture, 410, 80);
 		game.batch.draw(glasshouse.locationTexture, 180, 470);
 		game.batch.draw(gym.locationTexture, 600, 230);
-		game.batch.draw(charles.locationTexture, 400, 460);
+		game.batch.draw(charles.locationTexture, 450, 460);
 
 		// Draws text
         game.font.getData().setScale(1, 1);

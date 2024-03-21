@@ -11,7 +11,7 @@ public class StudyBuilding extends GameLocation {
         interactionMenu = new Texture("study_building_interact_menu.jpg");
         position = new Vector2(400, 280);
         bounds.setPosition(position);
-        bounds.width = 64;
-        bounds.height = 64;
+        bounds.width = 180;
+        bounds.height = 120;
     }
 }
