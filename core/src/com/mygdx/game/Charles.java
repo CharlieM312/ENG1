@@ -8,7 +8,7 @@ public class Charles extends GameLocation{
         hoursModifier = 2;
         locationTexture = new Texture("thecharles.jpg");
         interactionMenu = new Texture("charles_interaction_menu.jpg");
-        position = new Vector2(450, 460);
+        position = new Vector2(480, 460);
         bounds.setPosition(position);
         bounds.width = 170;
         bounds.height = 80;
