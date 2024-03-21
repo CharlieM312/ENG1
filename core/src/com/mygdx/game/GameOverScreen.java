@@ -18,7 +18,7 @@ public class GameOverScreen implements Screen {
     Texture background;
     Vector2 titlePosition;
     private float finalscore;
-    public GameOverScreen(final HeslingtonHustle game) {
+    public GameOverScreen(final HeslingtonHustle game, int score) {
         titlePosition = new Vector2((game.screenWidth / 2) - (150), (game.screenHeight / 2));
         this.game = game;
         camera = new OrthographicCamera();
