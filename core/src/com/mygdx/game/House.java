@@ -7,7 +7,7 @@ public class House extends GameLocation {
     public House() {
         energyModifier = 100;
         locationTexture = new Texture("house.jpg");
-        interactionMenu = new Texture("house_interact_menu.jpg");
+        interactionMenu = new Texture("house_interact_menu.png");
         position = new Vector2(100, 200);
         bounds.setPosition(position);
         bounds.width = 180;
