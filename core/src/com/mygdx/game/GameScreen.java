@@ -77,16 +77,15 @@ public class GameScreen implements Screen {
 		game.batch.draw(house.locationTexture, 100, 200);
 		game.batch.draw(lake.locationTexture, 410, 80);
 		game.batch.draw(glasshouse.locationTexture, 180, 470);
-		game.batch.draw(gym.locationTexture, 600, 230);
+		game.batch.draw(gym.locationTexture, 640, 230);
 		game.batch.draw(charles.locationTexture, 450, 460);
 
 		// Draws text
         game.font.getData().setScale(1, 1);
 		game.font.draw(game.batch, "Activities completed: " + activityCounter, 800, 580);
-		game.font.draw(game.batch, "Times Eaten: " + foodCounter, 800, 560);
 		game.font.draw(game.batch, "Day: " + currentDay, 10, 580);
 		game.font.draw(game.batch, "Time remaining: " + hoursremain, 10, 560);
-		game.font.draw(game.batch, "Energy: " + player.GetEnergy(), 800, 540);
+		game.font.draw(game.batch, "Energy: " + player.GetEnergy(), 800, 560);
 
 		// If player is not interacting with a building and their state is not set to locked,
 		// check for directional input keys
