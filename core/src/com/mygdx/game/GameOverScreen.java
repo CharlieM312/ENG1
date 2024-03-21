@@ -24,7 +24,7 @@ public class GameOverScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1000, 600);
         background = new Texture("background.jpg");
-        finalscore = 0;
+        finalscore = score;
 
     }
     // Prints final score on the screen
