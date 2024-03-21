@@ -2,6 +2,8 @@
 package com.mygdx.game;
 
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -32,9 +34,14 @@ public class GameOverScreen implements Screen {
         game.batch.draw(background, 0, 0);
         game.font.getData().setScale(3, 3);
         game.font.setColor(Color.WHITE);
-        game.font.draw(game.batch, "Heslington Hustle", 320, 300);
-        game.font.draw(game.batch, "Your final score was: " + finalscore, 320,250);
+        game.font.draw(game.batch, "Heslington Hustle", 300, 300);
+        game.font.draw(game.batch, "Your final score was: " + finalscore, 300,250);
+        game.font.draw(game.batch, "Press M to return to the main menu", 300, 200);
         game.batch.end();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+            game.setScreen(new MainMenuScreen(game));
+            dispose();
+        }
     }
 
     @Override
