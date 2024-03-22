@@ -2,7 +2,6 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-import com.mygdx.game.HeslingtonHustle;
 
 // Please note that on macOS your application needs to be started with the -XstartOnFirstThread JVM argument
 public class DesktopLauncher {
@@ -11,7 +10,7 @@ public class DesktopLauncher {
 		config.setForegroundFPS(60);
 		config.setTitle("Heslington Hustle");
 		config.setWindowedMode(1000, 600);
-		config.setWindowIcon("player_idle.jpg");
+		config.setWindowIcon("player_idle.png");
 		new Lwjgl3Application(new HeslingtonHustle(), config);
 	}
 }
